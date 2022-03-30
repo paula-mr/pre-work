@@ -22,6 +22,6 @@ Suas principais funcionalidades incluem:
 
 ## Tecnologias
 
-Frontend:
-Backend:
-Banco de dados:
+- Frontend:
+- Backend:
+- Banco de dados:
