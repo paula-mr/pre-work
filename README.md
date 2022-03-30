@@ -6,10 +6,10 @@ Projeto desenvolvido para a disciplina Prática em Desenvolvimento de Software 2
 
 ## Equipe
 
-Fernanda Rocha de Morais Gonçalves
-Luis Fernando Camargos Carvalho
-Paula Mara Ribeiro - Desenvolvedora de Software Fullstack
-Victor Gabriel Ferreira Moraes
+- Fernanda Rocha de Morais Gonçalves
+- Luis Fernando Camargos Carvalho
+- Paula Mara Ribeiro - Desenvolvedora de Software Fullstack
+- Victor Gabriel Ferreira Moraes
 
 ## Escopo
 
