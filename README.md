@@ -6,14 +6,14 @@ Projeto desenvolvido para a disciplina Prática em Desenvolvimento de Software 2
 
 ## Equipe
 
-- Fernanda Rocha de Morais Gonçalves
-- Luis Fernando Camargos Carvalho
+- Fernanda Rocha de Morais Gonçalves - Desenvolvedora de Software Fullstack
+- Luis Fernando Camargos Carvalho - Desenvolvedor de Software Frontend
 - Paula Mara Ribeiro - Desenvolvedora de Software Fullstack
-- Victor Gabriel Ferreira Moraes
+- Victor Gabriel Ferreira Moraes - Desenvolvedor de Software Fullstack
 
 ## Escopo
 
-O PreWork é uma solução para coworkings e escritórios realizarem o gerenciamento virtual de suas mesas compartilhadas, de forma a permitir que seus usuários reservem mesas de forma fácil e prática.
+O PreWork é uma solução web para coworkings e escritórios realizarem o gerenciamento virtual de suas mesas compartilhadas, de forma a permitir que seus usuários reservem mesas de forma fácil e prática.
 
 Suas principais funcionalidades incluem:
 
@@ -22,6 +22,6 @@ Suas principais funcionalidades incluem:
 
 ## Tecnologias
 
-- Frontend:
-- Backend:
-- Banco de dados:
+- Frontend: Typescript, com auxílio da biblioteca React
+- Backend: Python utilizando o framework de desenvolvimento web Django
+- Banco de dados: Postgresql e Django ORM
