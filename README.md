@@ -10,6 +10,7 @@ Projeto desenvolvido para a disciplina Prática em Desenvolvimento de Software 2
 - Luis Fernando Camargos Carvalho - Desenvolvedor de Software Frontend
 - Paula Mara Ribeiro - Desenvolvedora de Software Fullstack
 - Victor Gabriel Ferreira Moraes - Desenvolvedor de Software Fullstack
+- Eduardo de Paiva Dias - Desenvolvedor de Software Frontend
 
 ## Escopo
 
