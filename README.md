@@ -6,11 +6,11 @@ Projeto desenvolvido para a disciplina Prática em Desenvolvimento de Software 2
 
 ## Equipe
 
+- Eduardo de Paiva Dias - Desenvolvedor de Software Frontend
 - Fernanda Rocha de Morais Gonçalves - Desenvolvedora de Software Fullstack
 - Luis Fernando Camargos Carvalho - Desenvolvedor de Software Frontend
 - Paula Mara Ribeiro - Desenvolvedora de Software Fullstack
 - Victor Gabriel Ferreira Moraes - Desenvolvedor de Software Fullstack
-- Eduardo de Paiva Dias - Desenvolvedor de Software Frontend
 
 ## Escopo
 
