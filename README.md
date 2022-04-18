@@ -38,57 +38,27 @@ O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas 
 Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
 
 ### Gerenciamento de estações de trabalho
-- **Como** usuário administrador
-- **Quero** cadastrar salas de estações de trabalho
-- **Para** que os clientes possam reservá-las
+- **Como** usuário administrador **quero** cadastrar salas de estações de trabalho **para** que os clientes possam reservá-las
 
-- **Como** usuário administrador
-- **Quero** editar salas de estações de trabalho
-- **Para** manter os dados das salas atualizados
+- **Como** usuário administrador **quero** editar e deletar salas de estações de trabalho **para** manter os dados das salas atualizados
 
-- **Como** usuário administrador
-- **Quero** deletar salas de estações de trabalho
-- **Para** manter os dados das salas atualizados
+- **Como** usuário administrador **quero** visualizar uma listagem das salas de estações de trabalho existentes **para** facilitar o gerenciamento das salas
 
-- **Como** usuário administrador
-- **Quero** visualizar uma listagem das salas de estações de trabalho existentes
-- **Para** facilitar o gerenciamento das salas
+- **Como** usuário administrador **quero** cadastrar estações de trabalho **para** que eu possa adicioná-las a uma sala
 
-- **Como** usuário administrador
-- **Quero** cadastrar estações de trabalho
-- **Para** que eu possa adicioná-las a uma sala
-
-- **Como** usuário administrador
-- **Quero** associar estações de trabalho a uma sala
-- **Para** que os clientes possam reservar os assentos desejados
+- **Como** usuário administrador **quero** associar estações de trabalho a uma sala **para** que os clientes possam reservar os assentos desejados
 
 ### Gerenciamento de salas de reunião 
 
-- **Como** usuário administrador
-- **Quero** cadastrar salas de reunião
-- **Para** que os clientes possam reservá-las
+- **Como** usuário administrador **quero** cadastrar salas de reunião **para** que os clientes possam reservá-las
 
-- **Como** usuário administrador
-- **Quero** visualizar os detalhes de uma sala de reunião
-- **Para** verificar os dados cadastrados
+- **Como** usuário administrador **quero** editar e deletar salas de reunião **para** manter os dados das salas atualizados
 
-- **Como** usuário administrador
-- **Quero** editar salas de reunião
-- **Para** manter os dados das salas atualizados
+- **Como** usuário administrador **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas
 
-- **Como** usuário administrador
-- **Quero** deletar salas de reunião
-- **Para** manter os dados das salas atualizados
+- **Como** usuário administrador **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados
 
-- **Como** usuário administrador
-- **Quero** visualizar uma listagem das salas de reunião existentes
-- **Para** facilitar o gerenciamento das salas
+### Reserva de salas
+- **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico
 
-### Gerenciamento de salas de reunião 
-- **Como** usuário do PreWork
-- **Quero** reservar estações de trabalho
-- **Para** que eu possa trabalhar presencialmente em um local específico
-
-- **Como** usuário do PreWork
-- **Quero** reservar salas de reunião
-- **Para** que eu e outros colegas possa trabalhar presencialmente em um local específico
+- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possa trabalhar presencialmente em um local específico
