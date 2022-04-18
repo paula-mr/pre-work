@@ -33,6 +33,57 @@ Para a validação do PreWork, decidimos realizar um MVP Mágico de Oz, em que s
 
 O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas unidades de coworkings, o que nos permitirá validar a nossa hipótese, assim como compreender quais as maiores necessidades de cada um dos dois tipos de cliente e quanto interesse eles apresentam à solução fornecida.
 
-## Backlog
+## Backlog do Produto
 
 Backlog disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
+
+#### In Progress
+- Criar protótipós das interfaces 
+- Desenvolver MVP
+
+#### Backlog (Front-End)
+- Implementar página inicial (Admin)
+- Implementar página de cadastro de estações de trabalho
+- Implementar listagem de estações de trabalho
+- Implementar página de cadastro de salas de reunião
+- Implementar listagem de salas de reunião
+- Implementar edição de sala de reunião
+- Implementar exclusão de sala de reunião
+- Implementar edição das estações de trabalho
+- Implementar exclusão das estações de trabalho
+- Implementar página de detalhes da sala de reunião
+- Implementar página inicial (Cliente)
+- Implementar página de reserva de estações de trabalho
+- Implementar página de reserva de salas de reunião
+- Implementar página de salas indisponíveis
+
+#### Backlog (Banco de Dados)
+- Criar tabela de salas de reunião
+- Criar tabela de sala de estações de trabalho
+- Criar tabela de estações de trabalho
+- Criar tabela de usuários
+- Criar tabela de reserva de estações de trabalho
+- Criar tabela de reserva de salas de reunião
+
+
+#### Backlog (Back-End)
+ - Criar endpoint GET para salas de reunião
+ - Criar endpoint POST para salas de reunião
+ - Criar endpoint PUT para salas de reunião
+ - Criar endpoint DELETE para salas de reunião
+ - Criar endpoint GET (all) salas de reunião
+ - Criar endpoint GET para sala de estação de trabalho
+ - Criar endpoint POST para sala de estação de trabalho
+ - Criar endpoint PUT para sala de estação de trabalho
+ - Criar endpoint DELETE para sala de estação de trabalho
+ - Criar endpoint GET (all) salas de estações de trabalho
+ - Criar endpoint POST para reserva de estações de trabalho
+ - Criar endpoint GET para reserva de estações de trabalho
+ - Criar endpoint PUT para reserva de estações de trabalho
+ - Criar endpoint DELETE para reserva de estações de trabalho
+ - Criar endpoint GET (all) para reserva de estações de trabalho
+ - Criar endpoint POST para reserva de salas de reunião
+ - Criar endpoint GET para reserva de salas de reunião
+ - Criar endpoint PUT para reserva de salas de reunião
+ - Criar endpoint DELETE para reserva de salas de reunião
+  - Criar endpoint GET (all) para reserva salas de reunião
