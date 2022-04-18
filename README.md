@@ -35,55 +35,60 @@ O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas 
 
 ## Backlog do Produto
 
-Backlog disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
+Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
 
-#### In Progress
-- Criar protótipós das interfaces 
-- Desenvolver MVP
+### Gerenciamento de estações de trabalho
+- **Como** usuário administrador
+- **Quero** cadastrar salas de estações de trabalho
+- **Para** que os clientes possam reservá-las
 
-#### Backlog (Front-End)
-- Implementar página inicial (Admin)
-- Implementar página de cadastro de estações de trabalho
-- Implementar listagem de estações de trabalho
-- Implementar página de cadastro de salas de reunião
-- Implementar listagem de salas de reunião
-- Implementar edição de sala de reunião
-- Implementar exclusão de sala de reunião
-- Implementar edição das estações de trabalho
-- Implementar exclusão das estações de trabalho
-- Implementar página de detalhes da sala de reunião
-- Implementar página inicial (Cliente)
-- Implementar página de reserva de estações de trabalho
-- Implementar página de reserva de salas de reunião
-- Implementar página de salas indisponíveis
+- **Como** usuário administrador
+- **Quero** editar salas de estações de trabalho
+- **Para** manter os dados das salas atualizados
 
-#### Backlog (Banco de Dados)
-- Criar tabela de salas de reunião
-- Criar tabela de sala de estações de trabalho
-- Criar tabela de estações de trabalho
-- Criar tabela de usuários
-- Criar tabela de reserva de estações de trabalho
-- Criar tabela de reserva de salas de reunião
+- **Como** usuário administrador
+- **Quero** deletar salas de estações de trabalho
+- **Para** manter os dados das salas atualizados
 
+- **Como** usuário administrador
+- **Quero** visualizar uma listagem das salas de estações de trabalho existentes
+- **Para** facilitar o gerenciamento das salas
 
-#### Backlog (Back-End)
- - Criar endpoint GET para salas de reunião
- - Criar endpoint POST para salas de reunião
- - Criar endpoint PUT para salas de reunião
- - Criar endpoint DELETE para salas de reunião
- - Criar endpoint GET (all) salas de reunião
- - Criar endpoint GET para sala de estação de trabalho
- - Criar endpoint POST para sala de estação de trabalho
- - Criar endpoint PUT para sala de estação de trabalho
- - Criar endpoint DELETE para sala de estação de trabalho
- - Criar endpoint GET (all) salas de estações de trabalho
- - Criar endpoint POST para reserva de estações de trabalho
- - Criar endpoint GET para reserva de estações de trabalho
- - Criar endpoint PUT para reserva de estações de trabalho
- - Criar endpoint DELETE para reserva de estações de trabalho
- - Criar endpoint GET (all) para reserva de estações de trabalho
- - Criar endpoint POST para reserva de salas de reunião
- - Criar endpoint GET para reserva de salas de reunião
- - Criar endpoint PUT para reserva de salas de reunião
- - Criar endpoint DELETE para reserva de salas de reunião
-  - Criar endpoint GET (all) para reserva salas de reunião
+- **Como** usuário administrador
+- **Quero** cadastrar estações de trabalho
+- **Para** que eu possa adicioná-las a uma sala
+
+- **Como** usuário administrador
+- **Quero** associar estações de trabalho a uma sala
+- **Para** que os clientes possam reservar os assentos desejados
+
+### Gerenciamento de salas de reunião 
+
+- **Como** usuário administrador
+- **Quero** cadastrar salas de reunião
+- **Para** que os clientes possam reservá-las
+
+- **Como** usuário administrador
+- **Quero** visualizar os detalhes de uma sala de reunião
+- **Para** verificar os dados cadastrados
+
+- **Como** usuário administrador
+- **Quero** editar salas de reunião
+- **Para** manter os dados das salas atualizados
+
+- **Como** usuário administrador
+- **Quero** deletar salas de reunião
+- **Para** manter os dados das salas atualizados
+
+- **Como** usuário administrador
+- **Quero** visualizar uma listagem das salas de reunião existentes
+- **Para** facilitar o gerenciamento das salas
+
+### Gerenciamento de salas de reunião 
+- **Como** usuário do PreWork
+- **Quero** reservar estações de trabalho
+- **Para** que eu possa trabalhar presencialmente em um local específico
+
+- **Como** usuário do PreWork
+- **Quero** reservar salas de reunião
+- **Para** que eu e outros colegas possa trabalhar presencialmente em um local específico
