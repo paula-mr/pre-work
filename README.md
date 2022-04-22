@@ -61,4 +61,4 @@ Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-pre
 ### Reserva de salas
 - **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico
 
-- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possa trabalhar presencialmente em um local específico
+- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico
