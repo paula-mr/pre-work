@@ -33,32 +33,36 @@ Para a validação do PreWork, decidimos realizar um MVP Mágico de Oz, em que s
 
 O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas unidades de coworkings, o que nos permitirá validar a nossa hipótese, assim como compreender quais as maiores necessidades de cada um dos dois tipos de cliente e quanto interesse eles apresentam à solução fornecida.
 
+## Protótipo
+
+Protótipo disponível no [Figma](https://www.figma.com/file/KKFnCoqbvlcWkHjRBEAtyd/Prework).
+
 ## Backlog do Produto
 
 Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
 
+### Tarefas técnicas
+
+- Fazer setup do projeto de backend em Django (Paula)
+- Criar docker para projeto de backend (Paula)
+- Fazer setup do projeto de frontend em React (Luís)
+
 ### Gerenciamento de estações de trabalho
-- **Como** usuário administrador **quero** cadastrar salas de estações de trabalho **para** que os clientes possam reservá-las
 
-- **Como** usuário administrador **quero** editar e deletar salas de estações de trabalho **para** manter os dados das salas atualizados
+- **Como** usuário administrador **quero** cadastrar salas de estações de trabalho **para** que os clientes possam reservá-las (Victor)
+- **Como** usuário administrador **quero** editar e deletar salas de estações de trabalho **para** manter os dados das salas atualizados (Victor)
+- **Como** usuário administrador **quero** visualizar uma listagem das salas de estações de trabalho existentes **para** facilitar o gerenciamento das salas (Victor)
+- **Como** usuário administrador **quero** cadastrar estações de trabalho **para** que eu possa adicioná-las a uma sala (Luís)
+- **Como** usuário administrador **quero** associar estações de trabalho a uma sala **para** que os clientes possam reservar os assentos desejados (Luís)
 
-- **Como** usuário administrador **quero** visualizar uma listagem das salas de estações de trabalho existentes **para** facilitar o gerenciamento das salas
+### Gerenciamento de salas de reunião
 
-- **Como** usuário administrador **quero** cadastrar estações de trabalho **para** que eu possa adicioná-las a uma sala
-
-- **Como** usuário administrador **quero** associar estações de trabalho a uma sala **para** que os clientes possam reservar os assentos desejados
-
-### Gerenciamento de salas de reunião 
-
-- **Como** usuário administrador **quero** cadastrar salas de reunião **para** que os clientes possam reservá-las
-
-- **Como** usuário administrador **quero** editar e deletar salas de reunião **para** manter os dados das salas atualizados
-
-- **Como** usuário administrador **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas
-
-- **Como** usuário administrador **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados
+- **Como** usuário administrador **quero** cadastrar salas de reunião **para** que os clientes possam reservá-las (Fernanda)
+- **Como** usuário administrador **quero** editar e deletar salas de reunião **para** manter os dados das salas atualizados (Fernanda)
+- **Como** usuário administrador **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas (Fernanda)
+- **Como** usuário administrador **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados (Paula)
 
 ### Reserva de salas
-- **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico
 
-- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico
+- **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico (Eduardo)
+- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico (Eduardo)
