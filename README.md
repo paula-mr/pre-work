@@ -29,7 +29,11 @@ Suas principais funcionalidades incluem:
 
 ## MVP
 
-Para a validação do PreWork, decidimos realizar um MVP Mágico de Oz, em que será disponibilizado um formulário simples para os usuários realizarem as requisições de locação de sala de reunião ou espaço de trabalho, e estas serão processadas manualmente pela nossa equipe, de forma a remover o esforço operacional da empresa ou coworking.
+Com a pandemia do Covid-19, diversas empresas adotaram um regime remoto ou híbrido, o que causou o crescimento da procura por coworkings por parte dos funcionários e necessidade de gerenciamento do espaço de escritórios para empresas híbridas.
+
+Essas empresas com escritórios híbridos e coworkings realizam um trabalho manual para gerir usuários e agendamentos de mesas e salas de reuniões, muitas vezes de maneira informal (por chats ou formulários próprios) que serão processados manualmente, causando uma sobrecarga no time de operações e recursos humanos. Porém, a hipótese do PreWork é que elas não gostariam de ter esse gasto e estariam dispostas a contratar um serviço para resolver o problema por elas.
+
+Para a validação do PreWork, decidimos realizar um MVP Mágico de Oz, em que será disponibilizado um formulário simples para os usuários realizarem as requisições de locação de sala de reunião ou espaço de trabalho, que serão processadas manualmente pela nossa equipe, de forma a remover o esforço operacional da empresa ou coworking.
 
 O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas unidades de coworkings, o que nos permitirá validar a nossa hipótese, assim como compreender quais as maiores necessidades de cada um dos dois tipos de cliente e quanto interesse eles apresentam à solução fornecida.
 
@@ -37,9 +41,7 @@ O MVP será disponibilizado para poucas unidades de empresas híbridas e poucas 
 
 Protótipo disponível no [Figma](https://www.figma.com/file/KKFnCoqbvlcWkHjRBEAtyd/Prework).
 
-## Backlog do Produto
-
-Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
+## Backlog da Sprint
 
 ### Tarefas técnicas
 
@@ -66,3 +68,8 @@ Backlog de tarefas disponível no [Trello](https://trello.com/b/FBUHFzwk/pds-pre
 
 - **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico (Eduardo)
 - **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico (Eduardo)
+
+
+## Backlog do Produto
+
+Backlog de tarefas disponível também no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
