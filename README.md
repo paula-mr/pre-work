@@ -45,31 +45,66 @@ Protótipo disponível no [Figma](https://www.figma.com/file/KKFnCoqbvlcWkHjRBEA
 
 ### Tarefas técnicas
 
-- Fazer setup do projeto de backend em Django (Paula)
-- Criar docker para projeto de backend (Paula)
-- Fazer setup do projeto de frontend em React (Luís)
+- Fazer setup do projeto de backend em Django.(Fernanda)
+- Criar docker para projeto de backend. (Paula)
+- Fazer setup do projeto de frontend em React. (Luís)
 
-### Gerenciamento de estações de trabalho
+### Acesso
 
-- **Como** usuário administrador **quero** cadastrar salas de estações de trabalho **para** que os clientes possam reservá-las (Victor)
-- **Como** usuário administrador **quero** editar e deletar salas de estações de trabalho **para** manter os dados das salas atualizados (Victor)
-- **Como** usuário administrador **quero** visualizar uma listagem das salas de estações de trabalho existentes **para** facilitar o gerenciamento das salas (Victor)
-- **Como** usuário administrador **quero** cadastrar estações de trabalho **para** que eu possa adicioná-las a uma sala (Luís)
-- **Como** usuário administrador **quero** associar estações de trabalho a uma sala **para** que os clientes possam reservar os assentos desejados (Luís)
+- **Como** usuário do PreWork, **quero** realizar login no PreWork.
+  - Tarefa 1: Criar tabela de usuário no banco de dados. (Fernanda)
+  - Tarefa 2: Criar recurso de login. (Paula)
+  - Tarefa 3: Criar página de login. (Luís)
+  - Tarefa 4: Criar página inicial de cliente. (Eduardo)
 
-### Gerenciamento de salas de reunião
+### Reserva de estações de trabalho
 
-- **Como** usuário administrador **quero** cadastrar salas de reunião **para** que os clientes possam reservá-las (Fernanda)
-- **Como** usuário administrador **quero** editar e deletar salas de reunião **para** manter os dados das salas atualizados (Fernanda)
-- **Como** usuário administrador **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas (Fernanda)
-- **Como** usuário administrador **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados (Paula)
+- **Como** usuário do PreWork, **quero** filtrar por dia as estações de trabalho disponíveis em uma sala.
 
-### Reserva de salas
+  - Tarefa 1: Implementar página de reserva de estações de trabalho. (Eduardo)
+  - Tarefa 2: Implementar página de salas indisponíveis. (Luís)
+  - Tarefa 3: Criar tabela para sala de estações de trabalho. (Paula)
+  - Tarefa 4: Criar tabela de estações de trabalho. (Victor)
+  - Tarefa 5: Criar tabela de reservas de estações de trabalho. (Fernanda)
+  - Tarefa 6: Criar endpoint para retornar a disponibilidade das estações de trabalho na sala e dia pesquisados. (Victor)
+- **Como** usuário do PreWork, **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico.
 
-- **Como** usuário do PreWork **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico (Eduardo)
-- **Como** usuário do PreWork **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico (Eduardo)
-
+  - Tarefa 1: Implementar página de reserva de estações de trabalho. (Eduardo)
+  - Tarefa 2: Criar ednpoint para reserva de estação de trabalho. (Paula)
 
 ## Backlog do Produto
 
 Backlog de tarefas disponível também no [Trello](https://trello.com/b/FBUHFzwk/pds-prework).
+
+### Gestão de usuários
+
+* **Como** usuário administrador, **quero** cadastrar um novo usuário.
+* **Como** usuário administrador, **quero** administrar os usuários com acesso ao escritório.
+* **Como** usuário administrador, **quero** deslogar do PreWork.
+
+### Reserva de salas
+
+- **Como** usuário do PreWork, **quero** filtrar por horário as salas de reunião disponíveis.
+- **Como** usuário do PreWork, **quero** reservar salas de reunião **para** que eu e outros colegas possam trabalhar presencialmente em um local específico.
+- **Como** usuário do PreWork, **quero** gerenciar uma reserva realizada (visualizar minhas reservas, editar ou excluir.)
+
+### Reserva de estações de trabalho
+
+- **Como** usuário do PreWork, **quero** gerenciar uma reserva realizada (visualizar minhas reservas, editar ou excluir.)
+
+### Gerenciamento de estações de trabalho
+
+- **Como** usuário administrador, **quero** cadastrar salas de estações de trabalho **para** que os clientes possam reservá-las.
+- **Como** usuário administrador, **quero** editar e deletar salas de estações de trabalho **para** manter os dados das salas atualizados.
+- **Como** usuário administrador, **quero** visualizar uma listagem das salas de estações de trabalho existentes **para** facilitar o gerenciamento das salas.
+- **Como** usuário administrador, **quero** cadastrar estações de trabalho **para** que eu possa adicioná-las a uma sala.
+- **Como** usuário administrador, **quero** associar estações de trabalho a uma sala **para** que os clientes possam reservar os assentos desejados.
+- **Como** usuário administrador, **quero** visualizar todas as reservas de estações de trabalho realizadas.
+
+### Gerenciamento de salas de reunião
+
+- **Como** usuário administrador. **quero** cadastrar salas de reunião **para** que os clientes possam reservá-las .
+- **Como** usuário administrador, **quero** editar e deletar salas de reunião **para** manter os dados das salas atualizados.
+- **Como** usuário administrador, **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas.
+- **Como** usuário administrador, **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados.
+- **Como** usuário administrador, **quero** visualizar todas as reservas de salas de reunião realizadas.
