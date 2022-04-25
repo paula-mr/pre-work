@@ -43,9 +43,13 @@ Protótipo disponível no [Figma](https://www.figma.com/file/KKFnCoqbvlcWkHjRBEA
 
 ## Backlog da Sprint
 
+Na primeira sprint do PreWork, temos como objetivo lançar uma versão inicial funcional do projeto. Para isso, focaremos nas tarefas essenciais para seu lançamento: tarefas técnicas de configuração, acesso do cliente à plataforma e a funcionalidade de reserva de estação de trabalho por dia.
+
+Assim, tarefas como gestão de usuários e gestão de estações de trabalho continuarão sendo feitas manualmente pela equipe do PreWork. A funcionalidade de salas de reunião será priorizada em uma iteração futura.
+
 ### Tarefas técnicas
 
-- Fazer setup do projeto de backend em Django.(Fernanda)
+- Fazer setup do projeto de backend em Django. (Fernanda)
 - Criar docker para projeto de backend. (Paula)
 - Fazer setup do projeto de frontend em React. (Luís)
 
