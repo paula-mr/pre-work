@@ -55,7 +55,7 @@ Assim, tarefas como gestão de usuários e gestão de estações de trabalho con
 
 ### Acesso
 
-- **Como** usuário do PreWork, **quero** realizar login no PreWork.
+- **Como** usuário do PreWork, **quero** realizar login.
   - Tarefa 1: Criar tabela de usuário no banco de dados. (Fernanda)
   - Tarefa 2: Criar recurso de login. (Paula)
   - Tarefa 3: Criar página de login. (Luís)
@@ -74,7 +74,7 @@ Assim, tarefas como gestão de usuários e gestão de estações de trabalho con
 - **Como** usuário do PreWork, **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico.
 
   - Tarefa 1: Implementar página de reserva de estações de trabalho. (Eduardo)
-  - Tarefa 2: Criar ednpoint para reserva de estação de trabalho. (Paula)
+  - Tarefa 2: Criar endpoint para reserva de estação de trabalho. (Paula)
 
 ## Backlog do Produto
 
