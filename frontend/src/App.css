@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'ABeeZee';
+  src: url('./config/fonts/ABeeZee-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BebasNeue';
+  src: url('./config/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./config/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('./config/fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+*:focus {
+  outline: 0;
+}
+
+html,
+body,
+#root {
+  height: fit-content;
+  font-family: 'RobotoBold', sans-serif;
+  background-color: #eeeeee;
+  height: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: disc;
+}
+
+button {
+  cursor: pointer;
+}
+
+.App {
+  height: fit-content;
+  min-height: 100vh;
+}
