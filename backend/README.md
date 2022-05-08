@@ -19,3 +19,11 @@ E para gerar migrações do banco de dados, executar:
 E para aplicá-las:
 
 `` python manage.py migrate ``
+
+## Acessando o Django Admin
+
+A primeira vez que o projeto é executado, é necessário criar um usuário de acesso ao Django Admin. Para isso, rode e siga as instruções:
+
+`` python manage.py createsuperuser ``
+
+Depois, basta acessar `http://localhost:8000/admin/` para ter acesso às funções de admin.
