@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
+
+from src.user.adapters.api import UserApi
+from src.user.adapters.user_repository import UserRepository
+from src.user.domain.login import Login
+
+user_repository = UserRepository()
+login_service = Login(repository=user_repository)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login', csrf_exempt(UserApi.as_view(login_service=login_service)), name='login'),
 ]
