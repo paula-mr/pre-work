@@ -7,7 +7,7 @@ function Inicio() {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  const handleEntrar = () => {
+  const handleLogin = () => {
     navigate('/login');
   };
 
@@ -24,7 +24,7 @@ function Inicio() {
         <Button
           variant="outlined"
           className={classes.entrar}
-          onClick={handleEntrar}
+          onClick={handleLogin}
         >
           Entrar
         </Button>

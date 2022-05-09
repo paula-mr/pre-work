@@ -5,12 +5,9 @@ import {
   Toolbar,
   IconButton,
   Box,
+  Link,
 } from '@material-ui/core';
-import {
-  Link as LinkRouterDom,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiArrowLeft } from 'react-icons/fi';
 import { COLORS } from '../../../../config/material.theme';
 import useUsuarioContext from '../../../../context/user/context';
@@ -30,6 +27,10 @@ function Header() {
 
   const handleDeslogar = () => {
     return 0;
+  };
+
+  const handlePaginaInicial = () => {
+    navigate('/');
   };
 
   return (
@@ -52,13 +53,13 @@ function Header() {
           <Box width={30} />
         )}
         <div>
-          <LinkRouterDom
-            to="/"
+          <Link
+            onClick={handlePaginaInicial}
             className={classes.cabecalhoLink}
             target="_blank"
           >
             PreWork
-          </LinkRouterDom>
+          </Link>
         </div>
         {usuario ? (
           <>
@@ -99,11 +100,13 @@ const useStyles = makeStyles({
     fontFamily: 'RobotoBold',
     fontSize: '3.125rem',
     textDecoration: 'none',
+    color: COLORS.WHITE.DEFAULT,
     '&:hover': {
       color: COLORS.WHITE.DEFAULT,
       textDecoration: 'none',
       fontFamily: 'RobotoBold',
       fontSize: '3.125rem',
+      cursor: 'pointer',
     },
     '&:focus': {
       color: COLORS.WHITE.DEFAULT,
