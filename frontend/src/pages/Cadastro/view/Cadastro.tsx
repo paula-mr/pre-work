@@ -22,6 +22,7 @@ function Cadastro() {
   const [loading, setLoading] = useState(false);
 
   async function handleCadastrar() {
+    navigate('/home');
     setLoading(true);
     await new Promise(r => setTimeout(r, 2000));
     setLoading(false);

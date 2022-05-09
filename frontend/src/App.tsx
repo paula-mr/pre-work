@@ -8,7 +8,7 @@ import { theme } from './config/material.theme';
 
 function App() {
   return (
-    <div aria-label="Aplicativo Adote-me" className="App">
+    <div aria-label="PreWork" className="App">
       <AplicationContextProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />

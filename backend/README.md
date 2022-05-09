@@ -8,9 +8,15 @@ Para executar a aplicação, é preciso ter o Docker instalado e rodar:
 
 `` docker-compose up ``
 
-É preciso também manter a base de dados, para isso basta entrar no container web do docker:
+É preciso também manter a base de dados, para isso, em um novo terminal, rode o comando abaixo para entrar no container web do docker:
+
+Para ambiente Windows:
 
 `` docker exec -it backend-web-1 bash ``
+
+Para ambiente Linux:
+
+`` docker exec -it backend_web_1 bash ``
 
 E para gerar migrações do banco de dados, executar:
 

@@ -19,7 +19,7 @@
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "import/prefer-default-export": "off",
     "import/newline-after-import": "off",
     "react-hooks/rules-of-hooks": "error",

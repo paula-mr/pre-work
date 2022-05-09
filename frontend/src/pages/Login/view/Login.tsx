@@ -25,6 +25,7 @@ function Login() {
   };
 
   async function handleLogin() {
+    navigate('/home');
     setLoading(true);
     await LoginService.fazerLogin(login, senha);
     setLoading(false);
