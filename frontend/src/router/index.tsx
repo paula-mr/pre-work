@@ -6,12 +6,14 @@ import moduloCadastro from '../pages/Cadastro';
 import moduloHome from '../pages/Home';
 import NotFound from '../shared/components/NotFound';
 import Layout from '../shared/components/Layout';
+import moduloSalasReuniao from '../pages/SalasReuniao';
 
 export const rotas = [
     ...moduloInicio, 
     ...moduloLogin, 
     ...moduloCadastro,
     ...moduloHome,
+    ...moduloSalasReuniao,
   ];
 
 function Router() {

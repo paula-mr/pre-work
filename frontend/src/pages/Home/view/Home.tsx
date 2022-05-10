@@ -1,9 +1,20 @@
 import { makeStyles, Typography, Box} from '@material-ui/core';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { COLORS } from '../../../config/material.theme';
 
 
 function Home() {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const handleWorkStation = () => {
+    navigate('/home')
+  };
+
+  const handleMeetingRoom = () => {
+    navigate('/meetings-room')
+
+  };
 
   return (
     <Box className={classes.container}>
@@ -11,7 +22,10 @@ function Home() {
         <Typography className={classes.title}>
           Reservar estações de trabalho
           </Typography>
-        <Box className={classes.image}>
+        <Box
+          onClick={() => handleWorkStation()}
+          className={classes.image}
+        >
         <img src='./frontend/src/shared/assets/unid-trabalho.svg' alt="unidades de trabalho"  />
         </Box>
       </Box>
@@ -19,7 +33,10 @@ function Home() {
         <Typography className={classes.title}>
           Reservar salas de reuniões
         </Typography>
-        <Box className={classes.image}>
+        <Box 
+          className={classes.image}
+          onClick={() => handleMeetingRoom()}
+        >
         <img src="./frontend/src/shared/assets/salas-reuniao.svg" alt="salas de reuniao"  />
         </Box>
       </Box>
@@ -43,7 +60,10 @@ const useStyles = makeStyles({
     borderWidth: '2px',
     borderColor: COLORS.BLACK.ORIGINAL,
     borderRadius: '8px',
-    margin: '20px'
+    margin: '20px',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   title:{
     color: COLORS.BLACK.ORIGINAL,
