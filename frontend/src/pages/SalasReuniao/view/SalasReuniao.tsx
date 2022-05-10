@@ -80,7 +80,7 @@ function SalasReuniao() {
 }
 const useStyles = makeStyles({
  container:{
-     height: '80vh',
+     height: '100vh',
      display: 'grid',
      gridTemplateAreas: `'details form'`,
      gridTemplateColumns: '70% 30%',
@@ -89,7 +89,7 @@ const useStyles = makeStyles({
   },
   details:{
     gridArea: 'details',
-    height: '50vh',
+    height: '80vh',
     display: 'grid',
     gridTemplateAreas: `'detailsTop' 'detailsBottom'`,
     gridTemplateRows: '20% 80%'
@@ -132,7 +132,7 @@ const useStyles = makeStyles({
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
     borderRadius: '8px',
-    height: '50vh',
+    height: '80vh',
     margin: '20px'
 
   }
