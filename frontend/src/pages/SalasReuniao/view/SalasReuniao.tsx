@@ -1,3 +1,4 @@
+import { KeyboardDatePicker, TimePicker } from '@material-ui/pickers';
 import { makeStyles, MenuItem, Box, FormControl, InputLabel, Select, Typography, TextField, Divider} from '@material-ui/core';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,17 @@ function SalasReuniao() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [unit, setUnit] = React.useState('');
+  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedTime, handleTimeChange] = useState(new Date());
+
+  const onDateChange = (date: any,) => {
+    handleDateChange(date);
+  };
+
+  const onTimeChange = (time: any,) => {
+    handleTimeChange(time);
+  };
+
 
   return (
     <Box className={classes.container}>
@@ -76,9 +88,24 @@ function SalasReuniao() {
                 <Divider />
             </Box>
             <Box className={classes.datetime}>
-                      <p>data:</p>
+              <KeyboardDatePicker
+                variant="inline"
+                label='Data'
+                value={selectedDate}
+                onChange={onDateChange}
+                onError={console.log}
+                disablePast
+                format='DD/MM/yyyy'
+              />
 
+              <TimePicker
+                ampm={false}
+                label="Horário de início"
+                value={selectedTime}
+                onChange={onTimeChange}
+              />
             </Box>
+
                 
             <Box className={classes.actions}>
                 <Botao

@@ -1,3 +1,6 @@
+import MomentUtils from '@date-io/moment';
+import "moment/locale/pt-br";
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
@@ -7,8 +10,11 @@ import AplicationContextProvider from './context';
 import { theme } from './config/material.theme';
 
 function App() {
+
   return (
     <div aria-label="PreWork" className="App">
+      <MuiPickersUtilsProvider utils={MomentUtils} locale="pt-br" >
+
       <AplicationContextProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -28,6 +34,10 @@ function App() {
           <Router />
         </ThemeProvider>
       </AplicationContextProvider>
+
+      </MuiPickersUtilsProvider>
+
+
     </div>
   );
 }
