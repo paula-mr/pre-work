@@ -21,6 +21,13 @@ from src.user.adapters.api import UserApi
 from src.user.adapters.user_repository import UserRepository
 from src.user.domain.login import Login
 
+from src.work_station.adapters.models import WorkStation,WorkStationRoom, StationBooking
+
+admin.autodiscover()
+admin.site.register(WorkStation)
+admin.site.register(WorkStationRoom)
+admin.site.register(StationBooking)
+
 user_repository = UserRepository()
 login_service = Login(repository=user_repository)
 
