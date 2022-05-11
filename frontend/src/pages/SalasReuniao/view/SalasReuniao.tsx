@@ -1,9 +1,8 @@
-import { makeStyles, MenuItem, Box, FormControl, InputLabel, Select, Typography, TextField} from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
-import React from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { makeStyles, MenuItem, Box, FormControl, InputLabel, Select, Typography, TextField, Divider} from '@material-ui/core';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { COLORS } from '../../../config/material.theme';
-
+import Botao from '../../../shared/components/Botao';
 
 function SalasReuniao() {
   const classes = useStyles();
@@ -72,8 +71,31 @@ function SalasReuniao() {
             </Box>
         </Box>
         <Box className={classes.form}>
-            <p>teste</p>
+            <Box className={classes.header}>
+                <Typography>Sala de Reuniões A</Typography>
+                <Divider />
+            </Box>
+            <Box className={classes.datetime}>
+                      <p>data:</p>
 
+            </Box>
+                
+            <Box className={classes.actions}>
+                <Botao
+                    className={classes.botao}
+                    variant="outlined"
+                    onClick={()=>{console.log('clicked')}}
+                >
+                    Cancelar
+                </Botao>
+                <Botao
+                    className={classes.botao}
+                    variant="outlined"
+                    onClick={()=>{console.log('clicked')}}
+                >
+                    Agendar
+                </Botao>
+            </Box>
         </Box>
     </Box>
   );
@@ -132,9 +154,41 @@ const useStyles = makeStyles({
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
     borderRadius: '8px',
-    height: '80vh',
-    margin: '20px'
+    height: '75vh',
+    margin: '20px',
+    display: 'grid',
+    gridTemplateAreas: `'header' 'datetime' 'actions'`,
+    gridTemplateRows: '20% 65% 15%'
+  },
+  header:{
+      display: 'grid',
+      gridArea: 'header',
+      justifyContent: 'center',
+      padding: '5vh 2vh'
+  },
 
+  datetime:{
+    display: 'grid',
+    gridArea: 'datetime',
+    justifyContent: 'center',
+  },
+
+  actions:{
+      gridArea: 'actions',
+      display: 'flex',
+      justifyContent: 'space-evenly',
+      padding: '1vh'
+  },
+
+  botao: {
+    width: '120px',
+    height: '36px',
+    backgroundColor: COLORS.BLUE.DEFAULT,
+    color: COLORS.WHITE.DEFAULT,
+    borderColor: COLORS.BLACK.ORIGINAL,
+    '&:hover': {
+      backgroundColor: COLORS.BLUE.HOVER,
+    },
   }
 });
 
