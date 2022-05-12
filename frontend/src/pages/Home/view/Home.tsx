@@ -8,7 +8,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleWorkStation = () => {
-    navigate('/home')
+    navigate('/work-unit')
   };
 
   const handleMeetingRoom = () => {

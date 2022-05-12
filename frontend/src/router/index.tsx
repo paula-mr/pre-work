@@ -7,6 +7,7 @@ import moduloHome from '../pages/Home';
 import NotFound from '../shared/components/NotFound';
 import Layout from '../shared/components/Layout';
 import moduloSalasReuniao from '../pages/SalasReuniao';
+import moduloUnidadeTrabalho from '../pages/UnidadeTrabalho';
 
 export const rotas = [
     ...moduloInicio, 
@@ -14,6 +15,7 @@ export const rotas = [
     ...moduloCadastro,
     ...moduloHome,
     ...moduloSalasReuniao,
+    ...moduloUnidadeTrabalho,
   ];
 
 function Router() {
