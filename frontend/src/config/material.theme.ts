@@ -45,7 +45,7 @@ export const theme = createTheme({
     fontFamily: 'ABeeZee',
     h1: {
       fontWeight: 'normal',
-      fontSize: '4rem',
+      fontSize: '3rem',
       lineHeight: '3.2rem',
     },
     h2: {

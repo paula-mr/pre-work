@@ -9,17 +9,23 @@ function SalasReuniao() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [unit, setUnit] = React.useState('');
+  const [room, setRoom] = React.useState('');
+
   const [selectedDate, handleDateChange] = useState(new Date());
-  const [selectedTime, handleTimeChange] = useState(new Date());
+  const [selectedInitialTime, handleInitialTimeChange] = useState(new Date());
+  const [selectedFinalTime, handleFinalTimeChange] = useState(new Date());
 
   const onDateChange = (date: any,) => {
     handleDateChange(date);
   };
 
-  const onTimeChange = (time: any,) => {
-    handleTimeChange(time);
+  const onInitialTimeChange = (time: any,) => {
+    handleInitialTimeChange(time);
   };
 
+  const onFinalTimeChange = (time: any,) => {
+    handleFinalTimeChange(time);
+  };
 
   return (
     <Box className={classes.container}>
@@ -29,7 +35,7 @@ function SalasReuniao() {
                     className={classes.formControl}
                     variant="outlined" 
                 >
-                    <InputLabel htmlFor="age-simple">Unidade</InputLabel>  
+                    <InputLabel htmlFor="unit">Unidade</InputLabel>  
                     <Select
                         value={unit}
                     >
@@ -41,9 +47,9 @@ function SalasReuniao() {
                     className={classes.formControl}
                     variant="outlined" 
                 >
-                    <InputLabel htmlFor="age-simple">Unidade</InputLabel>  
+                    <InputLabel htmlFor="room">Sala</InputLabel>  
                     <Select
-                        value={unit}
+                        value={room}
                     >
                         <MenuItem aria-label="20" value={20}>Twenty</MenuItem>
                         <MenuItem aria-label="30" value={30}>Thirty</MenuItem>
@@ -99,10 +105,19 @@ function SalasReuniao() {
               />
 
               <TimePicker
+                variant="inline"
                 ampm={false}
                 label="Horário de início"
-                value={selectedTime}
-                onChange={onTimeChange}
+                value={selectedInitialTime}
+                onChange={onInitialTimeChange}
+              />
+
+              <TimePicker
+                variant="inline"
+                ampm={false}
+                label="Horário de fim"
+                value={selectedFinalTime}
+                onChange={onFinalTimeChange}
               />
             </Box>
 
@@ -133,12 +148,13 @@ const useStyles = makeStyles({
      display: 'grid',
      gridTemplateAreas: `'details form'`,
      gridTemplateColumns: '70% 30%',
-     alignItems: 'center'
+     alignItems: 'center',
+     marginTop: '5vh'
 
   },
   details:{
     gridArea: 'details',
-    height: '80vh',
+    height: '85vh',
     display: 'grid',
     gridTemplateAreas: `'detailsTop' 'detailsBottom'`,
     gridTemplateRows: '20% 80%'
@@ -155,7 +171,7 @@ const useStyles = makeStyles({
   },
 
   formControl:{
-    width: '25vh'
+    width: '45vh'
   },
 
 
@@ -181,7 +197,7 @@ const useStyles = makeStyles({
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
     borderRadius: '8px',
-    height: '75vh',
+    height: '80vh',
     margin: '20px',
     display: 'grid',
     gridTemplateAreas: `'header' 'datetime' 'actions'`,
