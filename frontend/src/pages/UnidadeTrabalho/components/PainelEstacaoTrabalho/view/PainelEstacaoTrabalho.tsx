@@ -40,7 +40,9 @@ function PainelEstacaoTrabalho() {
       estacaoTrabalho.indiceCadeira !== undefined &&
       estacaoTrabalho.ocupado !== 1
     )
-      setAssentoSelecionado(estacaoTrabalho.indiceCadeira);
+      if (estacaoTrabalho.indiceCadeira !== assentoSelecionado)
+        setAssentoSelecionado(estacaoTrabalho.indiceCadeira);
+      else setAssentoSelecionado(0);
 
     if (
       estacaoTrabalho.indiceCadeira !== null &&
@@ -125,9 +127,11 @@ function PainelEstacaoTrabalho() {
         )}
       </Box>
       <Box className={classes.containerRodape}>
-        {assentoSelecionado !== null && assentoSelecionado !== undefined
-          ? `Estação selecionada de número: ${assentoSelecionado}`
-          : ''}
+        {assentoSelecionado !== null &&
+        assentoSelecionado !== undefined &&
+        assentoSelecionado !== 0
+          ? `Assento Selecionado: ${assentoSelecionado}`
+          : 'Nenhum assento esta selecionado'}
       </Box>
     </>
   );
