@@ -136,6 +136,8 @@ const useStyles = makeStyles({
   container: {
     height: '80%',
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
   },
   containerRodape: {
     paddingLeft: '5px',
