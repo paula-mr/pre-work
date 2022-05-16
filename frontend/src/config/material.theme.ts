@@ -9,12 +9,16 @@ export const COLORS = {
   BLUE: {
     DEFAULT: '#3A73E2',
     HOVER: '#3a72bc',
+    HEAVENLY: '#5EC0C7',
+    CYAN: '#3A73E2',
   },
   RED: {
     DEFAULT: '#CC0000',
+    SALMON: '#EE4646',
   },
   GREEN: {
-    DEFAULT: '#5EC0C7',
+    DEFAULT: '#008000',
+    CARIBBEAN: '#0ACF83',
   },
   WHITE: {
     DEFAULT: '#FFFFFF',
@@ -114,7 +118,7 @@ export const theme = createTheme({
         },
       },
       notchedOutline: {
-        borderColor: COLORS.GREEN.DEFAULT,
+        borderColor: COLORS.BLUE.HEAVENLY,
         borderWidth: 2,
       },
     },

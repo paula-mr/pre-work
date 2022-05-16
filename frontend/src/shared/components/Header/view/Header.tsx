@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiArrowLeft } from 'react-icons/fi';
 import { COLORS } from '../../../../config/material.theme';
 import useUsuarioContext from '../../../../context/user/context';
+import { rotasLogadas } from '../../../../router/index';
 
 function Header() {
   const classes = useStyles();
@@ -18,7 +19,13 @@ function Header() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const rotasPrincipais = location.pathname !== '/';
+  const rotasLogout = rotasLogadas
+    .map(rota => rota.path)
+    .includes(location.pathname);
+  const rotasPaginaAnterior = rotasLogadas
+    .map(rota => rota.path)
+    .filter(rota => rota !== '/home')
+    .includes(location.pathname);
 
   const handleRedirecionarPaginaAnterior = () => {
     if (location.key !== 'default') navigate(-1);
@@ -26,7 +33,7 @@ function Header() {
   };
 
   const handleDeslogar = () => {
-    return 0;
+    navigate('/');
   };
 
   const handlePaginaInicial = () => {
@@ -40,7 +47,7 @@ function Header() {
       position="fixed"
     >
       <Toolbar>
-        {!rotasPrincipais ? (
+        {rotasPaginaAnterior ? (
           <IconButton
             className={classes.botao}
             aria-label="Voltar para página anterior"
@@ -61,7 +68,7 @@ function Header() {
             PreWork
           </Link>
         </div>
-        {usuario ? (
+        {rotasLogout ? (
           <>
             <IconButton
               className={classes.botao}

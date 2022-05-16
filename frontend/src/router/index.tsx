@@ -9,14 +9,19 @@ import Layout from '../shared/components/Layout';
 import moduloSalasReuniao from '../pages/SalasReuniao';
 import moduloUnidadeTrabalho from '../pages/UnidadeTrabalho';
 
-export const rotas = [
-    ...moduloInicio, 
-    ...moduloLogin, 
-    ...moduloCadastro,
-    ...moduloHome,
-    ...moduloSalasReuniao,
-    ...moduloUnidadeTrabalho,
-  ];
+export const rotasNaoLogadas = [
+  ...moduloInicio,
+  ...moduloLogin,
+  ...moduloCadastro,
+];
+
+export const rotasLogadas = [
+  ...moduloHome,
+  ...moduloSalasReuniao,
+  ...moduloUnidadeTrabalho,
+];
+
+export const rotas = [...rotasLogadas, ...rotasNaoLogadas];
 
 function Router() {
   return (
