@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <Box className={classes.container}>
-      <Box>
+      <Box className={classes.containerImage}>
         <Typography className={classes.title}>
           Reservar estações de trabalho
         </Typography>
@@ -26,7 +26,7 @@ function Home() {
           <img src={IconeUnidTrabalho} alt="unidades de trabalho" />
         </Box>
       </Box>
-      <Box>
+      <Box className={classes.containerImage}>
         <Typography className={classes.title}>
           Reservar salas de reuniões
         </Typography>
@@ -47,10 +47,14 @@ const useStyles = makeStyles({
     gap: '60px',
     marginTop: '20vh',
   },
+  containerImage:{
+    display: 'grid',
+    justifyItems: 'center'
+  },
   image: {
     backgroundColor: COLORS.WHITE.DEFAULT,
-    height: '20vh',
-    width: '20vh',
+    height: '28vh',
+    width: '31vh',
     borderWidth: '2px',
     borderColor: COLORS.BLACK.ORIGINAL,
     borderRadius: '8px',
