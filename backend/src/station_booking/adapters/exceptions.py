@@ -1,0 +1,2 @@
+class NoStationBookingFoundException(Exception):
+    pass
