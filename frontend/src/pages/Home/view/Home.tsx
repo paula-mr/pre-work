@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     gap: '60px',
     marginTop: '20vh',
   },
-  containerImage:{
+  containerImage: {
     display: 'grid',
     justifyItems: 'center'
   },
@@ -55,13 +55,24 @@ const useStyles = makeStyles({
     backgroundColor: COLORS.WHITE.DEFAULT,
     height: '28vh',
     width: '31vh',
-    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderWidth: '1px',
     borderColor: COLORS.BLACK.ORIGINAL,
-    borderRadius: '8px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: '20px',
+    transition: 'background-color 0.3s',
     '&:hover': {
       cursor: 'pointer',
+      backgroundColor: `${COLORS.BLUE.TRANSPARENT}`,
     },
+    '& img': {
+      maxHeight: '230px',
+      padding: '30px',
+    }
   },
   title: {
     color: COLORS.BLACK.ORIGINAL,

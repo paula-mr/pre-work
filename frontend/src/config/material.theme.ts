@@ -11,6 +11,7 @@ export const COLORS = {
     HOVER: '#3a72bc',
     HEAVENLY: '#5EC0C7',
     CYAN: '#3A73E2',
+    TRANSPARENT: '#7FBBD2FF'
   },
   RED: {
     DEFAULT: '#CC0000',
