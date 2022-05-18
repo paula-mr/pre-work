@@ -1,14 +1,14 @@
 from django.views import View
 from django.http import HttpResponse
-from django.core import serializers
 import json
+from datetime import datetime
 
 from src.utils import EnhancedJSONEncoder
 
 from src.station_booking.domain.istation_booking import IStationBooking
 from src.station_booking.adapters.exceptions import NoStationBookingFoundException
 
-## Adaptador de acesso aos serviços de Stations Booking via Web/REST
+## Adaptador de acesso aos serviços de Station Bookings via Web/REST
 class StationBookingApi(View):
     station_booking_service = None
     
@@ -17,16 +17,17 @@ class StationBookingApi(View):
 
     def get(self, request):        
         try:
-            room_id = request.GET.get('room_id', '')
-            date = request.GET.get('date', '')
+            param_room_id = request.GET.get('room_id', '')
+            param_date = request.GET.get('date', '')
+            date = datetime.strptime(param_date, "%Y-%m-%d") if param_date != '' else None
             station_bookings = self.station_booking_service.listStationBookings(
-                room_id=room_id, 
-                date=date,
+                room_id=param_room_id, 
+                date=date
             )
         except NoStationBookingFoundException:
             return HttpResponse(json.dumps(
                 {
-                    'detail': f"No station booking found."
+                    'detail': "No station booking found."
                 },
             ), status=404)
         except Exception:
