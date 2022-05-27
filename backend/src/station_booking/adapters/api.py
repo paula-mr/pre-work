@@ -30,7 +30,8 @@ class StationBookingApi(View):
                     'detail': "No station booking found."
                 },
             ), status=404)
-        except Exception:
+        except Exception as e:
+            print(e)
             return HttpResponse(json.dumps({'detail': 'Something went wrong'}), status=500)
 
         data = json.dumps(station_bookings, cls=EnhancedJSONEncoder)
