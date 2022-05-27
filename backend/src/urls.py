@@ -23,6 +23,9 @@ from src.user.domain.login import Login
 from src.station_booking.adapters.api import StationBookingApi
 from src.station_booking.adapters.station_booking_repository import StationBookingRepository
 from src.station_booking.domain.station_booking_service import StationBookingService
+from src.work_station_room.adapters.api import WorkStationRoomApi
+from src.work_station_room.adapters.work_station_room_repository import WorkStationRoomRepository
+from src.work_station_room.domain.work_station_room_service import WorkStationRoomService
 
 from src.work_station.adapters.models import WorkStation,WorkStationRoom, StationBooking
 
@@ -37,8 +40,12 @@ login_service = Login(repository=user_repository)
 station_booking_repository = StationBookingRepository()
 station_booking_service = StationBookingService(repository=station_booking_repository)
 
+work_station_room_repository = WorkStationRoomRepository()
+work_station_room_service = WorkStationRoomService(repository=work_station_room_repository)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', csrf_exempt(UserApi.as_view(login_service=login_service)), name='login'),
     path('stationBookings', csrf_exempt(StationBookingApi.as_view(station_booking_service=station_booking_service)), name='stationBookings'),
+    path('workStationRooms', csrf_exempt(WorkStationRoomApi.as_view(work_station_room_service=work_station_room_service)), name='workStationRooms'),
 ]

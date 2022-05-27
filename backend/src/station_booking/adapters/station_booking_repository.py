@@ -12,6 +12,7 @@ from src.station_booking.adapters.exceptions import NoStationBookingFoundExcepti
 ## booking do banco de dados
 class StationBookingRepository(IStationBookingRepository):
     def listStationBookings(self, date: datetime) -> List[StationBooking]:
+        station_bookings_model = None
         if date != None:
             station_bookings_model =  StationBookingModel.objects.filter(
                 date__year=date.year,

@@ -1,0 +1,2 @@
+class NoWorkStationRoomsFoundException(Exception):
+    pass
