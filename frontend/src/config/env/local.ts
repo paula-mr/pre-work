@@ -1,6 +1,6 @@
 const envConfig = {
-  PUBLIC_URL: 'https://localhost:3000',
-  API_UTL: 'http://localhost:8000',
+  PUBLIC_URL: 'http://localhost:3000',
+  API_URL: 'http://localhost:8000',
 };
 
 export default envConfig;
