@@ -8,3 +8,4 @@ class WorkStationRoom:
     id: str
     name: str
     stations: List[WorkStation]
+    matrix: List[List[str]]

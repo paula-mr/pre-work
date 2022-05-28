@@ -1,10 +1,9 @@
 from typing import List
-from datetime import datetime
+import ast
 
 from src.work_station.adapters.models import WorkStationRoom as WorkStationRoomModel
 from src.work_station_room.domain.iwork_station_room_repository import IWorkStationRoomRepository
 from src.work_station_room.domain.work_station_room import WorkStationRoom
-from src.user.domain.user import User
 from src.work_station.domain.work_station import WorkStation
 from src.work_station_room.adapters.exceptions import NoWorkStationRoomsFoundException
 
@@ -32,10 +31,12 @@ class WorkStationRoomRepository(IWorkStationRoomRepository):
                     name=station_model.name
                 )
                 stations.append(station)
+            matrix = ast.literal_eval(station_room_model.matrix)
             work_station_room = WorkStationRoom(
                 id=str(station_room_model.room_id),
                 name=station_room_model.name,
-                stations=stations
+                stations=stations,
+                matrix=matrix
             )
             work_station_rooms.append(work_station_room)
 
