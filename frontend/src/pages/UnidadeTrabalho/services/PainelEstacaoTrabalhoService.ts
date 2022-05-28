@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable class-methods-use-this */
 import { COLORS } from '../../../config/material.theme';
+import WorkStationRepository, {
+  IWorkStationRoom,
+} from '../../../repositorios/WorkStationRepository';
 
 export interface IEstado {
   indice: number;
@@ -20,8 +23,12 @@ export interface IEstacaoTrabalho {
 }
 
 class PainelEstacaoTrabalhoService {
+  public async getWorkStationRooms(): Promise<IWorkStationRoom[]> {
+    const rooms = await WorkStationRepository.listWorkStationRooms();
+    return rooms;
+  }
+
   public async obterDadosBackEnd(): Promise<IObterEstacaoTrabalho> {
-    await this.delay(1000);
     const matriz = [
       [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
       [1, 0, 6, -1, -1, -1, -1, -1, -1, -1],

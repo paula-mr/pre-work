@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { KeyboardDatePicker, TimePicker } from '@material-ui/pickers';
 import {
   makeStyles,
@@ -15,12 +15,16 @@ import { useNavigate } from 'react-router-dom';
 import { PainelEstacaoTrabalho } from '../components/PainelEstacaoTrabalho';
 import { COLORS } from '../../../config/material.theme';
 import Botao from '../../../shared/components/Botao';
+import WorkStationService from '../services/PainelEstacaoTrabalhoService';
+import { IWorkStationRoom } from '../../../repositorios/WorkStationRepository';
 
 function UnidadeTrabalho() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [unit, setUnit] = React.useState('');
-  const [room, setRoom] = React.useState('');
+  const [workStationRooms, setWorkStationRooms] = React.useState<
+    IWorkStationRoom[] | null
+  >(null);
 
   const [selectedDate, handleDateChange] = useState(new Date());
   const [selectedInitialTime, handleInitialTimeChange] = useState(new Date());
@@ -37,6 +41,15 @@ function UnidadeTrabalho() {
   const onFinalTimeChange = (time: any) => {
     handleFinalTimeChange(time);
   };
+
+  const getWorkStationRooms = async () => {
+    const rooms = await WorkStationService.getWorkStationRooms();
+    setWorkStationRooms(rooms);
+  };
+
+  useEffect(() => {
+    getWorkStationRooms();
+  }, []);
 
   return (
     <Box className={classes.container}>
@@ -55,13 +68,10 @@ function UnidadeTrabalho() {
           </FormControl>
           <FormControl className={classes.formControl} variant="outlined">
             <InputLabel htmlFor="room">Sala</InputLabel>
-            <Select value={room}>
-              <MenuItem aria-label="20" value={20}>
-                Twenty
-              </MenuItem>
-              <MenuItem aria-label="30" value={30}>
-                Thirty
-              </MenuItem>
+            <Select value={workStationRooms}>
+              {workStationRooms?.map(room => (
+                <MenuItem aria-label="20">{room.name}</MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
