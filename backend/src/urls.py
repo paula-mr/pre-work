@@ -21,6 +21,7 @@ from src.user.adapters.api import LoginApi, UserApi
 from src.user.adapters.user_repository import UserRepository
 from src.user.domain.login_service import LoginService
 from src.user.domain.user_service import UserService
+from src.work_station.adapters.models import WorkStation, WorkStationRoom, StationBooking
 from src.work_station_room.adapters.api import WorkStationRoomApi
 from src.work_station_room.adapters.work_station_room_repository import WorkStationRoomRepository
 from src.work_station_room.domain.work_station_room_service import WorkStationRoomService
@@ -29,6 +30,10 @@ from src.station_booking.adapters.station_booking_repository import StationBooki
 from src.station_booking.domain.station_booking_service import StationBookingService
 
 admin.autodiscover()
+
+admin.site.register(WorkStation)
+admin.site.register(WorkStationRoom)
+admin.site.register(StationBooking)
 
 user_repository = UserRepository()
 login_service = LoginService(repository=user_repository)
