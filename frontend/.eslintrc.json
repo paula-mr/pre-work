@@ -23,6 +23,7 @@
     "import/prefer-default-export": "off",
     "import/newline-after-import": "off",
     "react-hooks/rules-of-hooks": "error",
+    "no-plusplus": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
