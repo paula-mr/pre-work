@@ -28,7 +28,7 @@ class StationBookingService(IStationBooking):
         station_rooms = self.rooms_repository.listWorkStationRooms(room_id=room_id)
         if len(station_rooms) > 0:
             work_station_room = station_rooms[0]
-            return work_station_room.get_room_bookings(bookings=station_bookings)
+            return work_station_room.get_room_bookings(all_bookings=all_bookings)
         return []
 
     def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
