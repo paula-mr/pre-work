@@ -6,6 +6,7 @@ from src.station_booking.domain.istation_booking import IStationBooking
 from src.station_booking.domain.istation_booking_repository import IStationBookingRepository
 from src.station_booking.domain.station_booking import StationBooking
 from src.work_station_room.domain.iwork_station_room_repository import IWorkStationRoomRepository
+from src.station_booking.adapters.exceptions import StationAlreadyBookedException
 
 
 ## Classe de domínio
@@ -36,4 +37,8 @@ class StationBookingService(IStationBooking):
         return station_bookings
 
     def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
-        self.bookings_repository.bookStation(user_id=user_id, station_id=station_id, date=date)
+        existing_booking = self.bookings_repository.getStationBooking(station_id=station_id, date=date)
+        if not existing_booking:
+            self.bookings_repository.bookStation(user_id=user_id, station_id=station_id, date=date)
+        else:
+            raise StationAlreadyBookedException

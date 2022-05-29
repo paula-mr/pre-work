@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User as UserModel
 
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 from uuid import UUID
 
@@ -48,6 +48,15 @@ class StationBookingRepository(IStationBookingRepository):
             station_bookings.append(station_booking)
 
         return station_bookings
+
+    def getStationBooking(self, station_id: UUID, date: datetime) -> Optional[StationBooking]:
+        booking = StationBookingModel.objects.filter(
+            date__year=date.year,
+            date__month=date.month,
+            date__day=date.day,
+            station_id=station_id
+        ).first()
+        return booking
     
     def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
         try:

@@ -3,3 +3,6 @@ class NoStationBookingFoundException(Exception):
 
 class NoStationFoundException(Exception):
     pass
+
+class StationAlreadyBookedException(Exception):
+    pass

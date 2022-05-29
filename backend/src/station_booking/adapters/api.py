@@ -6,7 +6,7 @@ from datetime import datetime
 from src.utils import EnhancedJSONEncoder
 
 from src.station_booking.domain.istation_booking import IStationBooking
-from src.station_booking.adapters.exceptions import NoStationBookingFoundException, NoStationFoundException
+from src.station_booking.adapters.exceptions import NoStationBookingFoundException, NoStationFoundException, StationAlreadyBookedException
 from src.user.adapters.exceptions import NoUserFoundException
 
 
@@ -59,6 +59,8 @@ class StationBookingApi(View):
             return HttpResponse(json.dumps({'detail': 'Invalid user'}), status=400)
         except NoStationFoundException as e:
             return HttpResponse(json.dumps({'detail': 'Invalid station'}), status=400)
+        except StationAlreadyBookedException as e:
+            return HttpResponse(json.dumps({'detail': 'This station is already booked'}), status=400)
         except Exception as e:
             print(e)
             return HttpResponse(json.dumps({'detail': 'Something went wrong'}), status=500)
