@@ -4,7 +4,7 @@ import json
 
 from src.utils import EnhancedJSONEncoder
 
-from src.user.domain.ilogin import ILogin
+from src.user.domain.ilogin_service import ILoginService
 from src.user.domain.iuser_service import IUserService
 from src.user.adapters.exceptions import NoUserFoundException, UsernameAlreadyExistsException
 
@@ -13,7 +13,7 @@ from src.user.adapters.exceptions import NoUserFoundException, UsernameAlreadyEx
 class LoginApi(View):
     login_service = None
     
-    def __init__(self, login_service: ILogin):
+    def __init__(self, login_service: ILoginService):
         self.login_service = login_service
 
     def post(self, request):
@@ -34,6 +34,9 @@ class LoginApi(View):
         data = json.dumps(user, cls=EnhancedJSONEncoder)
         return HttpResponse(data, status=200)
 
+
+## Oferece acesso ao sistema via Web/REST
+## Considerado um adaptador em Arquitetura Hexagonal
 class UserApi(View):
     user_service = None
     

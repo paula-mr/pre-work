@@ -19,7 +19,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from src.user.adapters.api import LoginApi, UserApi
 from src.user.adapters.user_repository import UserRepository
-from src.user.domain.login import Login
+from src.user.domain.login_service import LoginService
 from src.user.domain.user_service import UserService
 from src.work_station_room.adapters.api import WorkStationRoomApi
 from src.work_station_room.adapters.work_station_room_repository import WorkStationRoomRepository
@@ -31,7 +31,7 @@ from src.station_booking.domain.station_booking_service import StationBookingSer
 admin.autodiscover()
 
 user_repository = UserRepository()
-login_service = Login(repository=user_repository)
+login_service = LoginService(repository=user_repository)
 user_service = UserService(repository=user_repository)
 
 work_station_room_repository = WorkStationRoomRepository()
