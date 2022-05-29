@@ -37,6 +37,14 @@ function WorkStationRooms() {
     setSelectedDate(date);
   };
 
+  const handleCreateStationBooking = async () => {
+    WorkStationService.createStationBooking({
+      user_id: '123',
+      station_id: '456',
+      date: selectedDate.toDate(),
+    });
+  };
+
   const getWorkStationRooms = async () => {
     const workStationRooms = await WorkStationService.getWorkStationRooms();
     setRooms(workStationRooms);
@@ -104,9 +112,7 @@ function WorkStationRooms() {
           <Botao
             className={classes.botao}
             variant="outlined"
-            onClick={() => {
-              console.log('clicked');
-            }}
+            onClick={handleCreateStationBooking}
           >
             Agendar
           </Botao>

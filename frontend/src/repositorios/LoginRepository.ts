@@ -5,6 +5,7 @@
 import axios from '../shared/utils/AxiosInstance';
 
 export type IUser = {
+  id: string;
   mail: string;
   first_name: string;
   last_name: string;

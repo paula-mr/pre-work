@@ -5,6 +5,7 @@ import { Dayjs } from 'dayjs';
 import WorkStationRepository, {
   IWorkStationRoom,
   IWorkStation,
+  ICreateStationBooking,
 } from '../../../repositorios/WorkStationRepository';
 
 class WorkStationRoomsService {
@@ -26,6 +27,13 @@ class WorkStationRoomsService {
       roomBookedStations.push(booking.station),
     );
     return roomBookedStations;
+  }
+
+  public async createStationBooking(stationBooking: ICreateStationBooking) {
+    const response = await WorkStationRepository.createStationBooking(
+      stationBooking,
+    );
+    return response;
   }
 }
 
