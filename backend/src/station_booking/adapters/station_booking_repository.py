@@ -31,32 +31,19 @@ class StationBookingRepository(IStationBookingRepository):
 
         station_bookings = []
         for booking_model in station_bookings_model:
-            person = booking_model.person
-            work_station = booking_model.station
-            station_booking = StationBooking(
-                person=User(
-                    first_name=person.first_name, 
-                    last_name=person.last_name, 
-                    email=person.email
-                ), 
-                station=WorkStation(
-                    id=str(work_station.station_id),
-                    name=work_station.name
-                ),
-                date=booking_model.date
-            )
+            station_booking = self.__map_booking(booking_model)
             station_bookings.append(station_booking)
 
         return station_bookings
 
     def getStationBooking(self, station_id: UUID, date: datetime) -> Optional[StationBooking]:
-        booking = StationBookingModel.objects.filter(
+        booking_model = StationBookingModel.objects.filter(
             date__year=date.year,
             date__month=date.month,
             date__day=date.day,
             station_id=station_id
         ).first()
-        return booking
+        return self.__map_booking(booking_model)
     
     def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
         try:
@@ -71,3 +58,19 @@ class StationBookingRepository(IStationBookingRepository):
 
         reservation = StationBookingModel(person=user, station=station, date=date)
         reservation.save()
+
+    def __map_booking(self, booking_model: StationBookingModel) -> StationBooking:
+        person = booking_model.person
+        work_station = booking_model.station
+        return StationBooking(
+            person=User(
+                first_name=person.first_name, 
+                last_name=person.last_name, 
+                email=person.email
+            ), 
+            station=WorkStation(
+                id=str(work_station.station_id),
+                name=work_station.name
+            ),
+            date=booking_model.date
+        ) 
