@@ -4,14 +4,14 @@ import json
 
 from src.utils import EnhancedJSONEncoder
 
-from src.work_station_room.domain.iwork_station_room import IWorkStationRoom
+from src.work_station_room.domain.iwork_station_room_service import IWorkStationRoomService
 from src.work_station_room.adapters.exceptions import NoWorkStationRoomsFoundException
 
 ## Adaptador de acesso aos serviços de Work Station Rooms via Web/REST
 class WorkStationRoomApi(View):
     work_station_room_service = None
     
-    def __init__(self, work_station_room_service: IWorkStationRoom):
+    def __init__(self, work_station_room_service: IWorkStationRoomService):
         self.work_station_room_service = work_station_room_service
 
     def get(self, request):        
