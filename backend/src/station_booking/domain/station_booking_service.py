@@ -1,3 +1,4 @@
+from uuid import UUID
 from typing import List
 from datetime import datetime
 
@@ -33,3 +34,6 @@ class StationBookingService(IStationBooking):
             return station_bookings_by_room
 
         return station_bookings
+
+    def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
+        self.bookings_repository.bookStation(user_id=user_id, station_id=station_id, date=date)
