@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { KeyboardDatePicker, TimePicker } from '@material-ui/pickers';
 import {
   makeStyles,
@@ -8,43 +8,39 @@ import {
   InputLabel,
   Select,
   Typography,
-  TextField,
   Divider,
 } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
-import { PainelEstacaoTrabalho } from '../components/PainelEstacaoTrabalho';
+import dayjs from 'dayjs';
+
+import WorkStationsPanel from '../components/WorkStationsPanel/WorkStationsPanel';
 import { COLORS } from '../../../config/material.theme';
 import Botao from '../../../shared/components/Botao';
-import WorkStationService from '../services/PainelEstacaoTrabalhoService';
+import WorkStationService from '../services/WorkStationRoomsService';
 import { IWorkStationRoom } from '../../../repositorios/WorkStationRepository';
 
-function UnidadeTrabalho() {
+function WorkStationRooms() {
   const classes = useStyles();
-  const navigate = useNavigate();
-  const [unit, setUnit] = React.useState('');
-  const [workStationRooms, setWorkStationRooms] = React.useState<
-    IWorkStationRoom[] | null
-  >(null);
+  const [unit, setUnit] = useState('Pampulha');
+  const [rooms, setRooms] = useState<IWorkStationRoom[] | null>(null);
+  const [selectedRoom, setSelectedRoom] = useState<IWorkStationRoom | null>(
+    null,
+  );
+  const [selectedDate, setSelectedDate] = useState(dayjs());
 
-  const [selectedDate, handleDateChange] = useState(new Date());
-  const [selectedInitialTime, handleInitialTimeChange] = useState(new Date());
-  const [selectedFinalTime, handleFinalTimeChange] = useState(new Date());
-
-  const onDateChange = (date: any) => {
-    handleDateChange(date);
+  const handleRoomChange = (event: any) => {
+    const roomID = event.target.value;
+    const room = rooms?.find(r => r.id === roomID);
+    setSelectedRoom(room || null);
   };
 
-  const onInitialTimeChange = (time: any) => {
-    handleInitialTimeChange(time);
-  };
-
-  const onFinalTimeChange = (time: any) => {
-    handleFinalTimeChange(time);
+  const handleDateChange = (date: any) => {
+    setSelectedDate(date);
   };
 
   const getWorkStationRooms = async () => {
-    const rooms = await WorkStationService.getWorkStationRooms();
-    setWorkStationRooms(rooms);
+    const workStationRooms = await WorkStationService.getWorkStationRooms();
+    setRooms(workStationRooms);
+    setSelectedRoom(workStationRooms?.[0]);
   };
 
   useEffect(() => {
@@ -58,57 +54,40 @@ function UnidadeTrabalho() {
           <FormControl className={classes.formControl} variant="outlined">
             <InputLabel htmlFor="unit">Unidade</InputLabel>
             <Select value={unit}>
-              <MenuItem aria-label="20" value={20}>
-                Twenty
-              </MenuItem>
-              <MenuItem aria-label="30" value={30}>
-                Thirty
+              <MenuItem aria-label="20" value="Pampulha">
+                Pampulha
               </MenuItem>
             </Select>
           </FormControl>
           <FormControl className={classes.formControl} variant="outlined">
             <InputLabel htmlFor="room">Sala</InputLabel>
-            <Select value={workStationRooms}>
-              {workStationRooms?.map(room => (
-                <MenuItem aria-label="20">{room.name}</MenuItem>
+            <Select value={selectedRoom?.id || ''} onChange={handleRoomChange}>
+              {rooms?.map(room => (
+                <MenuItem aria-label="20" value={room.id}>
+                  {room.name}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>
         </Box>
         <Box className={classes.detailsBottom}>
-          <PainelEstacaoTrabalho />
+          <WorkStationsPanel room={selectedRoom} date={selectedDate} />
         </Box>
       </Box>
       <Box className={classes.form}>
         <Box className={classes.header}>
-          <Typography>Sala de Reuniões A</Typography>
+          <Typography>{selectedRoom?.name}</Typography>
           <Divider />
         </Box>
         <Box className={classes.datetime}>
           <KeyboardDatePicker
             variant="inline"
             label="Data"
-            value={selectedDate}
-            onChange={onDateChange}
-            onError={console.log}
+            value={selectedDate.toDate()}
+            onChange={handleDateChange}
+            autoOk
             disablePast
             format="DD/MM/yyyy"
-          />
-
-          <TimePicker
-            variant="inline"
-            ampm={false}
-            label="Horário de início"
-            value={selectedInitialTime}
-            onChange={onInitialTimeChange}
-          />
-
-          <TimePicker
-            variant="inline"
-            ampm={false}
-            label="Horário de fim"
-            value={selectedFinalTime}
-            onChange={onFinalTimeChange}
           />
         </Box>
 
@@ -227,4 +206,4 @@ const useStyles = makeStyles({
   },
 });
 
-export default UnidadeTrabalho;
+export default WorkStationRooms;

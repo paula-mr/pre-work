@@ -4,7 +4,7 @@
 /* eslint-disable class-methods-use-this */
 import axios from '../shared/utils/AxiosInstance';
 
-export type IAutenticaoUsuario = {
+export type IUser = {
   mail: string;
   first_name: string;
   last_name: string;

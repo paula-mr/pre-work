@@ -7,7 +7,7 @@ import moduloHome from '../pages/Home';
 import NotFound from '../shared/components/NotFound';
 import Layout from '../shared/components/Layout';
 import moduloSalasReuniao from '../pages/SalasReuniao';
-import moduloUnidadeTrabalho from '../pages/UnidadeTrabalho';
+import workStationRoomsModule from '../pages/WorkStationRooms';
 
 export const rotasNaoLogadas = [
   ...moduloInicio,
@@ -18,7 +18,7 @@ export const rotasNaoLogadas = [
 export const rotasLogadas = [
   ...moduloHome,
   ...moduloSalasReuniao,
-  ...moduloUnidadeTrabalho,
+  ...workStationRoomsModule,
 ];
 
 export const rotas = [...rotasLogadas, ...rotasNaoLogadas];
