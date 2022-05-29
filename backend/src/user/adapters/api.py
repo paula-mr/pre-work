@@ -19,6 +19,9 @@ class UserApi(View):
         data = json.loads(request.body.decode("utf-8"))
         username = data.get('username')
         password = data.get('password')
+
+        if not username or not password:
+            return HttpResponse(json.dumps({'detail': 'Invalid request'}), status=400)
         
         try:
             user = self.login_service.login(username=username, password=password)
