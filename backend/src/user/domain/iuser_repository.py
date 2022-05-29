@@ -7,3 +7,6 @@ from src.user.domain.user import User
 class IUserRepository(metaclass=abc.ABCMeta):
     def login(self, username: str, password: str) -> User:
         pass
+
+    def create(self, user: User, password: str) -> User:
+        pass
