@@ -112,3 +112,12 @@ Backlog de tarefas disponível também no [Trello](https://trello.com/b/FBUHFzwk
 - **Como** usuário administrador, **quero** visualizar uma listagem das salas de reunião existentes **para** facilitar o gerenciamento das salas.
 - **Como** usuário administrador, **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados.
 - **Como** usuário administrador, **quero** visualizar todas as reservas de salas de reunião realizadas.
+
+
+## Arquitetura do Backend
+
+### Arquitetura Hexagonal
+
+
+### Domain Driven Design
+
