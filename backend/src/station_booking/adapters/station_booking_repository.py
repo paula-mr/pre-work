@@ -64,6 +64,7 @@ class StationBookingRepository(IStationBookingRepository):
         work_station = booking_model.station
         return StationBooking(
             person=User(
+                id=person.id,
                 first_name=person.first_name, 
                 last_name=person.last_name, 
                 email=person.email
