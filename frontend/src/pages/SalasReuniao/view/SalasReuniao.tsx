@@ -104,10 +104,11 @@ function SalasReuniao() {
       <Box className={classes.form}>
         <Box className={classes.header}>
           <Typography>Sala de Reuniões A</Typography>
-          <Divider />
+          <Divider className={classes.muiDivider} />
         </Box>
         <Box className={classes.datetime}>
           <KeyboardDatePicker
+            className={classes.datetimeInternal}
             variant="inline"
             label="Data"
             value={selectedDate}
@@ -118,6 +119,7 @@ function SalasReuniao() {
           />
 
           <TimePicker
+            className={classes.datetimeInternal}
             variant="inline"
             ampm={false}
             label="Horário de início"
@@ -126,6 +128,7 @@ function SalasReuniao() {
           />
 
           <TimePicker
+            className={classes.datetimeInternal}
             variant="inline"
             ampm={false}
             label="Horário de fim"
@@ -160,12 +163,14 @@ function SalasReuniao() {
 }
 const useStyles = makeStyles({
   container: {
-    height: '100vh',
+    height: 'calc(100vh - 64px)',
+    maxWidth: '1600px',
+    margin: 'auto',
     display: 'grid',
     gridTemplateAreas: `'details form'`,
     gridTemplateColumns: '70% 30%',
     alignItems: 'center',
-    marginTop: '5vh',
+    paddingTop: '64px'
   },
   details: {
     gridArea: 'details',
@@ -178,7 +183,8 @@ const useStyles = makeStyles({
     gridArea: 'detailsTop',
     margin: '20px',
     backgroundColor: COLORS.WHITE.DEFAULT,
-    borderRadius: '8px',
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     display: 'flex',
     placeContent: 'space-around',
     alignItems: 'center',
@@ -187,17 +193,37 @@ const useStyles = makeStyles({
     borderColor: COLORS.BLACK.ORIGINAL,
   },
   formControl: {
-    width: '45vh',
+    width: '100%',
+    marginLeft: '20px',
+    marginRight: '20px',
+    '&:first-child': {
+      marginRight: '0',
+    },
+    '&:last-child': {
+      marginRight: '20px'
+    },
   },
   detailsBottom: {
     gridArea: 'detailsBottom',
     margin: '20px',
     backgroundColor: COLORS.WHITE.DEFAULT,
-    borderRadius: '8px',
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     display: 'grid',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
+    '& [readonly]': {
+      cursor: 'initial',
+      position: 'relative',
+      zIndex: 1,
+      '& + fieldset': {
+        backgroundColor: COLORS.BLUE.TRANSPARENT_B,
+        '& legend': {
+          display: 'none'
+        }
+      }
+    }
   },
   title: {
     fontSize: '40px',
@@ -209,32 +235,38 @@ const useStyles = makeStyles({
   form: {
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
-    borderRadius: '8px',
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     height: '80vh',
     margin: '20px',
-    display: 'grid',
     gridTemplateAreas: `'header' 'datetime' 'actions'`,
     gridTemplateRows: '20% 65% 15%',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   header: {
-    display: 'grid',
-    gridArea: 'header',
-    justifyContent: 'center',
-    padding: '5vh 2vh',
+    width: '100%',
+    paddingLeft: '30px',
+    paddingRight: '30px',
+    '& p': {
+      margin: 'auto',
+      width: 'fit-content',
+      padding: '40px 0'
+    }
   },
   datetime: {
-    display: 'grid',
-    gridArea: 'datetime',
-    justifyContent: 'center',
+    padding: '50px 30px',
   },
   actions: {
-    gridArea: 'actions',
     display: 'flex',
-    justifyContent: 'space-evenly',
-    padding: '1vh',
+    width: '100%',
+    justifyContent: 'space-between',
+    padding: '30px',
+    marginTop: 'auto'
   },
   botao: {
     width: '120px',
@@ -246,6 +278,28 @@ const useStyles = makeStyles({
       backgroundColor: COLORS.BLUE.HOVER,
     },
   },
+
+  datetimeInternal: {
+    paddingBottom: '20px',
+    '&> div': {
+      marginTop: '24px',
+      border: 'solid 1px black',
+      borderRadius: '10px',
+      padding: '0 10px',
+      '&::before': {
+        border: 'none !important'
+      },
+      '&::after': {
+        border: 'none !important',
+      }
+    },
+  },
+
+  muiDivider: {
+    background: COLORS.BLACK.DEFAULT,
+    height: '2px',
+    width: '100%',
+  }
 });
 
 export default SalasReuniao;

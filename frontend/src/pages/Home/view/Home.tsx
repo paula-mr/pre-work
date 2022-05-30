@@ -61,11 +61,18 @@ const useStyles = makeStyles({
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
-    borderRadius: '8px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 4px rgba(0, 0, 0, 0.25)',
     margin: '20px',
+    transition: 'background-color 0.3s',
     '&:hover': {
       cursor: 'pointer',
+      backgroundColor: `${COLORS.BLUE.TRANSPARENT_A}`,
     },
+    '& img': {
+      maxHeight: '230px',
+      padding: '30px',
+    }
   },
   title: {
     color: COLORS.BLACK.ORIGINAL,
