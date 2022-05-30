@@ -67,7 +67,7 @@ const useStyles = makeStyles({
     transition: 'background-color 0.3s',
     '&:hover': {
       cursor: 'pointer',
-      backgroundColor: `${COLORS.BLUE.TRANSPARENT}`,
+      backgroundColor: `${COLORS.BLUE.TRANSPARENT_A}`,
     },
     '& img': {
       maxHeight: '230px',
