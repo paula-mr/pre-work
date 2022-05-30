@@ -43,7 +43,7 @@ class StationBookingRepository(IStationBookingRepository):
             date__day=date.day,
             station_id=station_id
         ).first()
-        return self.__map_booking(booking_model)
+        return self.__map_booking(booking_model) if booking_model != None else None
     
     def bookStation(self, user_id: str, station_id: UUID, date: datetime) -> None:
         try:
