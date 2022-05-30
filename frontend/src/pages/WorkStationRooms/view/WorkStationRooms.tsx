@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import dayjs from 'dayjs';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import WorkStationsPanel from '../components/WorkStationsPanel/WorkStationsPanel';
 import { COLORS } from '../../../config/material.theme';
@@ -24,6 +25,7 @@ import {
 
 function WorkStationRooms() {
   const classes = useStyles();
+  const navigate = useNavigate();
   const [unit, setUnit] = useState('Pampulha');
   const [rooms, setRooms] = useState<IWorkStationRoom[] | null>(null);
   const [selectedRoom, setSelectedRoom] = useState<IWorkStationRoom | null>(
@@ -132,7 +134,7 @@ function WorkStationRooms() {
             className={classes.botao}
             variant="outlined"
             onClick={() => {
-              console.log('clicked');
+              navigate('/home');
             }}
           >
             Cancelar
