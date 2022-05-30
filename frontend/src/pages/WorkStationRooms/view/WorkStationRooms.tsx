@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 /* eslint-disable react/jsx-boolean-value */
 import React, { useState, useEffect } from 'react';
 import { KeyboardDatePicker } from '@material-ui/pickers';
@@ -21,8 +22,10 @@ import {
   IWorkStation,
 } from '../../../repositorios/WorkStationRepository';
 import { SelectComplete } from '../../../shared/components/SelectComplete';
+import useUsuarioContext from '../../../context/user/context';
 
 function WorkStationRooms() {
+  const { usuario } = useUsuarioContext();
   const classes = useStyles();
   const navigate = useNavigate();
   const [selectedUnit, setSelectUnit] = useState<string>('Pampulha');
@@ -44,7 +47,7 @@ function WorkStationRooms() {
   const handleCreateStationBooking = async () => {
     if (selectedWorkStation) {
       WorkStationService.createStationBooking({
-        user_id: '2',
+        user_id: usuario.id.toString(),
         station_id: selectedWorkStation.id,
         date: selectedDate.format('YYYY-MM-DD'),
       });
