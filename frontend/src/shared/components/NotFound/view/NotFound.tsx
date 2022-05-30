@@ -1,10 +1,8 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 
 function NotFound() {
-  window.location.href = '/';
-
-  // eslint-disable-next-line react/jsx-no-useless-fragment
-  return <></>;
+  return <Typography>Not Found</Typography>;
 }
 
 export default NotFound;

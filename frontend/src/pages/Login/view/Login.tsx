@@ -11,10 +11,12 @@ import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import LoginService from '../services/LoginService';
 import Botao from '../../../shared/components/Botao';
 import { COLORS } from '../../../config/material.theme';
+import useUsuarioContext from '../../../context/user/context';
 
 function Login() {
   const classes = useStyles();
   const navigate = useNavigate();
+  const { usuario, setUsuario } = useUsuarioContext();
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
@@ -25,10 +27,22 @@ function Login() {
   };
 
   async function handleLogin() {
-    navigate('/home');
-    setLoading(true);
-    await LoginService.fazerLogin(login, senha);
-    setLoading(false);
+    const dadosUsuario = await LoginService.fazerLogin(login, senha);
+
+    if (dadosUsuario) {
+      setUsuario({
+        email: dadosUsuario.email,
+        firstName: dadosUsuario.first_name,
+        lastName: dadosUsuario.last_name,
+        id: dadosUsuario.id,
+        isAuthenticated: true,
+      });
+      localStorage.setItem(
+        'dadosUsuario',
+        JSON.stringify({ ...dadosUsuario, isAuthenticated: true }),
+      );
+      navigate('/home');
+    }
   }
 
   return (
@@ -37,7 +51,6 @@ function Login() {
         name="Email"
         autoFocus
         variant="outlined"
-        disabled={loading}
         label="Email"
         color="primary"
         onChange={e => setLogin(e.target.value)}
@@ -45,7 +58,6 @@ function Login() {
       />
       <TextField
         aria-label="senha"
-        disabled={loading}
         onChange={e => setSenha(e.target.value)}
         color="primary"
         variant="outlined"
@@ -74,7 +86,6 @@ function Login() {
       <Botao
         variant="outlined"
         className={classes.botaoLogin}
-        carregando={loading}
         onClick={() => handleLogin()}
       >
         Entrar

@@ -15,7 +15,7 @@ import { rotasLogadas } from '../../../../router/index';
 
 function Header() {
   const classes = useStyles();
-  const { usuario } = useUsuarioContext();
+  const { usuario, setUsuario } = useUsuarioContext();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,10 +33,22 @@ function Header() {
   };
 
   const handleDeslogar = () => {
+    localStorage.removeItem('dadosUsuario');
+    setUsuario({
+      email: '',
+      firstName: '',
+      id: 0,
+      lastName: '',
+      isAuthenticated: false,
+    });
     navigate('/');
   };
 
   const handlePaginaInicial = () => {
+    if (usuario.isAuthenticated) {
+      navigate('/home');
+      return;
+    }
     navigate('/');
   };
 

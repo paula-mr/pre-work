@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-boolean-value */
+import React, { useState } from 'react';
 import { KeyboardDatePicker, TimePicker } from '@material-ui/pickers';
 import {
   makeStyles,
@@ -10,16 +12,20 @@ import {
   TextField,
   Divider,
 } from '@material-ui/core';
-import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { COLORS } from '../../../config/material.theme';
 import Botao from '../../../shared/components/Botao';
+import { SelectComplete } from '../../../shared/components/SelectComplete';
 
 function SalasReuniao() {
   const classes = useStyles();
   const navigate = useNavigate();
   const [unit, setUnit] = React.useState('');
-  const [room, setRoom] = React.useState('');
+  const [selectedUnit, setSelectUnit] = useState<string>('Pampulha');
+  const [units, setUnits] = useState<string[]>([]);
+  const [selectedRoom, setSelectedRoom] = useState<string>('');
+  const [rooms, setRooms] = useState<string[]>([]);
+
 
   const [selectedDate, handleDateChange] = useState(new Date());
   const [selectedInitialTime, handleInitialTimeChange] = useState(new Date());
@@ -42,26 +48,26 @@ function SalasReuniao() {
       <Box className={classes.details}>
         <Box className={classes.detailsTop}>
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel htmlFor="unit">Unidade</InputLabel>
-            <Select value={unit}>
-              <MenuItem aria-label="20" value={20}>
-                Twenty
-              </MenuItem>
-              <MenuItem aria-label="30" value={30}>
-                Thirty
-              </MenuItem>
-            </Select>
+            <SelectComplete
+              label="Unidade"
+              options={units}
+              value={selectedUnit}
+              setValue={newUnit => {
+                setSelectUnit(newUnit);
+              }}
+              disableClearable={true}
+            />
           </FormControl>
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel htmlFor="room">Sala</InputLabel>
-            <Select value={room}>
-              <MenuItem aria-label="20" value={20}>
-                Twenty
-              </MenuItem>
-              <MenuItem aria-label="30" value={30}>
-                Thirty
-              </MenuItem>
-            </Select>
+            <SelectComplete
+              label="Salas"
+              options={rooms}
+              value={selectedRoom}
+              setValue={newRoom => {
+                setSelectUnit(newRoom);
+              }}
+              disableClearable={true}
+            />
           </FormControl>
         </Box>
         <Box className={classes.detailsBottom}>
@@ -168,7 +174,6 @@ const useStyles = makeStyles({
     gridTemplateAreas: `'detailsTop' 'detailsBottom'`,
     gridTemplateRows: '20% 80%',
   },
-
   detailsTop: {
     gridArea: 'detailsTop',
     margin: '20px',
@@ -177,29 +182,30 @@ const useStyles = makeStyles({
     display: 'flex',
     placeContent: 'space-around',
     alignItems: 'center',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: COLORS.BLACK.ORIGINAL,
   },
-
   formControl: {
     width: '45vh',
   },
-
   detailsBottom: {
     gridArea: 'detailsBottom',
     margin: '20px',
     backgroundColor: COLORS.WHITE.DEFAULT,
     borderRadius: '8px',
     display: 'grid',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: COLORS.BLACK.ORIGINAL,
   },
-
   title: {
     fontSize: '40px',
     padding: '20px',
   },
-
   input: {
     padding: '20px',
   },
-
   form: {
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
@@ -209,6 +215,9 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateAreas: `'header' 'datetime' 'actions'`,
     gridTemplateRows: '20% 65% 15%',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: COLORS.BLACK.ORIGINAL,
   },
   header: {
     display: 'grid',
@@ -216,20 +225,17 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     padding: '5vh 2vh',
   },
-
   datetime: {
     display: 'grid',
     gridArea: 'datetime',
     justifyContent: 'center',
   },
-
   actions: {
     gridArea: 'actions',
     display: 'flex',
     justifyContent: 'space-evenly',
     padding: '1vh',
   },
-
   botao: {
     width: '120px',
     height: '36px',

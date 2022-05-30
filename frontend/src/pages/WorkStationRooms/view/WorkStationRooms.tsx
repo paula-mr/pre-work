@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
+/* eslint-disable react/jsx-boolean-value */
+import React, { useState, useEffect } from 'react';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import {
   makeStyles,
-  MenuItem,
   Box,
   FormControl,
-  InputLabel,
-  Select,
   Typography,
   Divider,
 } from '@material-ui/core';
@@ -22,24 +20,18 @@ import {
   IWorkStationRoom,
   IWorkStation,
 } from '../../../repositorios/WorkStationRepository';
+import { SelectComplete } from '../../../shared/components/SelectComplete';
 
 function WorkStationRooms() {
   const classes = useStyles();
   const navigate = useNavigate();
-  const [unit, setUnit] = useState('Pampulha');
+  const [selectedUnit, setSelectUnit] = useState<string>('Pampulha');
+  const [units, setUnits] = useState<string[]>([]);
   const [rooms, setRooms] = useState<IWorkStationRoom[] | null>(null);
-  const [selectedRoom, setSelectedRoom] = useState<IWorkStationRoom | null>(
-    null,
-  );
+  const [selectedRoom, setSelectedRoom] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const [selectedWorkStation, setSelectedWorkStation] =
     useState<IWorkStation | null>(null);
-
-  const handleRoomChange = (event: any) => {
-    const roomID = event.target.value;
-    const room = rooms?.find(r => r.id === roomID);
-    setSelectedRoom(room || null);
-  };
 
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
@@ -73,7 +65,7 @@ function WorkStationRooms() {
   const getWorkStationRooms = async () => {
     const workStationRooms = await WorkStationService.getWorkStationRooms();
     setRooms(workStationRooms);
-    setSelectedRoom(workStationRooms?.[0]);
+    setSelectedRoom(workStationRooms?.[0]?.name);
   };
 
   useEffect(() => {
@@ -85,27 +77,31 @@ function WorkStationRooms() {
       <Box className={classes.details}>
         <Box className={classes.detailsTop}>
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel htmlFor="unit">Unidade</InputLabel>
-            <Select value={unit}>
-              <MenuItem aria-label="20" value="Pampulha">
-                Pampulha
-              </MenuItem>
-            </Select>
+            <SelectComplete
+              label="Unidade"
+              options={units}
+              value={selectedUnit}
+              setValue={newUnit => {
+                setSelectUnit(newUnit);
+              }}
+              disableClearable={true}
+            />
           </FormControl>
           <FormControl className={classes.formControl} variant="outlined">
-            <InputLabel htmlFor="room">Sala</InputLabel>
-            <Select value={selectedRoom?.id || ''} onChange={handleRoomChange}>
-              {rooms?.map(room => (
-                <MenuItem aria-label="20" value={room.id}>
-                  {room.name}
-                </MenuItem>
-              ))}
-            </Select>
+            <SelectComplete
+              label="Salas"
+              options={rooms ? rooms.map(f => f.name) : []}
+              value={selectedRoom}
+              setValue={newRoom => {
+                setSelectedRoom(newRoom);
+              }}
+              disableClearable={true}
+            />
           </FormControl>
         </Box>
         <Box className={classes.detailsBottom}>
           <WorkStationsPanel
-            room={selectedRoom}
+            room={rooms ? rooms.filter(m => m.name === selectedRoom)[0] : null}
             date={selectedDate}
             selectedWorkStation={selectedWorkStation}
             handleSelectedWorkStation={handleSelectedWorkStation}
@@ -114,7 +110,7 @@ function WorkStationRooms() {
       </Box>
       <Box className={classes.form}>
         <Box className={classes.header}>
-          <Typography>{selectedRoom?.name}</Typography>
+          <Typography>{selectedRoom}</Typography>
           <Divider />
         </Box>
         <Box className={classes.datetime}>
@@ -167,7 +163,6 @@ const useStyles = makeStyles({
     gridTemplateAreas: `'detailsTop' 'detailsBottom'`,
     gridTemplateRows: '20% 80%',
   },
-
   detailsTop: {
     gridArea: 'detailsTop',
     margin: '20px',
@@ -176,12 +171,13 @@ const useStyles = makeStyles({
     display: 'flex',
     placeContent: 'space-around',
     alignItems: 'center',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: COLORS.BLACK.ORIGINAL,
   },
-
   formControl: {
     width: '45vh',
   },
-
   detailsBottom: {
     gridArea: 'detailsBottom',
     margin: '20px',
@@ -189,6 +185,8 @@ const useStyles = makeStyles({
     borderRadius: '8px',
     display: 'grid',
     borderColor: COLORS.BLACK.DEFAULT,
+    borderWidth: '2px',
+    borderStyle: 'solid',
   },
 
   title: {
@@ -209,18 +207,23 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateAreas: `'header' 'datetime' 'actions'`,
     gridTemplateRows: '20% 65% 15%',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: COLORS.BLACK.ORIGINAL,
   },
   header: {
     display: 'grid',
     gridArea: 'header',
     justifyContent: 'center',
     padding: '5vh 2vh',
+
   },
 
   datetime: {
     display: 'grid',
     gridArea: 'datetime',
     justifyContent: 'center',
+
   },
 
   actions: {
@@ -228,6 +231,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-evenly',
     padding: '1vh',
+
   },
 
   botao: {

@@ -1,5 +1,5 @@
 import { makeStyles, Typography, Box } from '@material-ui/core';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { COLORS } from '../../../config/material.theme';
 import IconeUnidTrabalho from '../../../shared/assets/unid-trabalho.svg';
 import IconeSalasReuniao from '../../../shared/assets/salas-reuniao.svg';
@@ -47,15 +47,19 @@ const useStyles = makeStyles({
     gap: '60px',
     marginTop: '20vh',
   },
-  containerImage:{
+  containerImage: {
     display: 'grid',
-    justifyItems: 'center'
+    justifyItems: 'center',
   },
   image: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: COLORS.WHITE.DEFAULT,
     height: '28vh',
     width: '31vh',
     borderWidth: '2px',
+    borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
     borderRadius: '8px',
     margin: '20px',

@@ -1,4 +1,6 @@
+/* eslint-disable no-else-return */
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import {
   makeStyles,
   Box,
@@ -10,22 +12,47 @@ import { useNavigate } from 'react-router-dom';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { COLORS } from '../../../config/material.theme';
 import Botao from '../../../shared/components/Botao';
+import CadastroService from '../services/CadastroService';
+
 
 function Cadastro() {
   const classes = useStyles();
   const navigate = useNavigate();
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
   const [senhaVisivel, setSenhaVisivel] = useState(false);
-  const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [confirmarSenhaVisivel, setConfirmarSenhaVisivel] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   async function handleCadastrar() {
-    navigate('/home');
-    setLoading(true);
-    await new Promise(r => setTimeout(r, 2000));
-    setLoading(false);
+    const dadosCadastro = await CadastroService.fazerLogin(
+      email,
+      senha,
+      nome,
+      sobrenome,
+    );
+    if (dadosCadastro.status === 201) {
+      navigate('/login');
+      toast.success('Cadastro efetuado com sucesso.', {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error('Erro ao cadastrar.', {
+        position: 'bottom-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   }
 
   const handleLogin = () => {
@@ -38,15 +65,31 @@ function Cadastro() {
         name="Email"
         autoFocus
         variant="outlined"
-        disabled={loading}
         label="Email"
         color="primary"
-        onChange={e => setLogin(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
+        className={classes.input}
+      />
+      <TextField
+        name="Nome"
+        autoFocus
+        variant="outlined"
+        label="Nome"
+        color="primary"
+        onChange={e => setNome(e.target.value)}
+        className={classes.input}
+      />
+      <TextField
+        name="Sobrenome"
+        autoFocus
+        variant="outlined"
+        label="Sobrenome"
+        color="primary"
+        onChange={e => setSobrenome(e.target.value)}
         className={classes.input}
       />
       <TextField
         aria-label="senha"
-        disabled={loading}
         onChange={e => setSenha(e.target.value)}
         color="primary"
         variant="outlined"
@@ -72,39 +115,10 @@ function Cadastro() {
           ),
         }}
       />
-      <TextField
-        aria-label="Confirmar Senha"
-        disabled={loading}
-        onChange={e => setConfirmarSenha(e.target.value)}
-        color="primary"
-        variant="outlined"
-        label="Confirmar Senha"
-        type={confirmarSenhaVisivel ? 'text' : 'password'}
-        className={classes.input}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment
-              position="start"
-              onClick={() => setConfirmarSenhaVisivel(!confirmarSenhaVisivel)}
-            >
-              {confirmarSenhaVisivel ? (
-                <IconButton size="small">
-                  <MdVisibility />
-                </IconButton>
-              ) : (
-                <IconButton size="small" data-testid="botao-senha">
-                  <MdVisibilityOff />
-                </IconButton>
-              )}
-            </InputAdornment>
-          ),
-        }}
-      />
       <Botao
         variant="outlined"
         className={classes.botaoCadastrar}
-        carregando={loading}
-        onClick={() => handleCadastrar}
+        onClick={() => handleCadastrar()}
       >
         Cadastrar
       </Botao>

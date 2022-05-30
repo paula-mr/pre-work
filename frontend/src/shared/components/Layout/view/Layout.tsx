@@ -15,21 +15,8 @@ interface ILayoutProps {
 
 function Layout({ children }: ILayoutProps) {
   const classes = useStyles();
-  const location = useLocation();
-  const [rotaAtual, setRotaAtual] = useState<IRota | undefined>();
 
-  useEffect(() => {
-    const [{ route }] = matchRoutes(rotas, location) || [];
-    setRotaAtual(route as IRota);
-  }, []);
-
-  return rotaAtual?.semLayout ? (
-    <main className={classes.container}>
-      <Container maxWidth="xl" fixed>
-        {children}
-      </Container>
-    </main>
-  ) : (
+  return (
     <>
       <main className={classes.container}>
         <Header />

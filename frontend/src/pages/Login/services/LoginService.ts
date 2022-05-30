@@ -1,14 +1,23 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-useless-return */
 /* eslint-disable class-methods-use-this */
 import LoginRepository from '../../../repositorios/LoginRepository';
+
+export interface IResponseLogin {
+  email: string;
+  first_name: string;
+  id: number;
+  last_name: string;
+}
+
 class LoginService {
-  public async fazerLogin(email: string, senha: string): Promise<void> {
-    const respostaUsuarioAd = await LoginRepository.fazerLogin(email, senha);
+  public async fazerLogin(
+    email: string,
+    senha: string,
+  ): Promise<IResponseLogin> {
+    const response = await LoginRepository.fazerLogin(email, senha);
 
-    console.log(respostaUsuarioAd);
-    if (!respostaUsuarioAd) return;
-
-    return;
+    return response?.data;
   }
 }
 

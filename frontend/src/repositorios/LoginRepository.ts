@@ -13,14 +13,14 @@ export type IUser = {
 
 class LoginRepository {
   async fazerLogin(nome: string, senha: string) {
-    const resposta = await axios.post('/login', {
+    const response = await axios.post('/login', {
       username: nome,
       password: senha,
     });
-    if (!resposta) {
+    if (!response) {
       return;
     }
-    return resposta;
+    return response;
   }
 }
 

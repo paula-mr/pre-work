@@ -6,7 +6,6 @@ import { Box, makeStyles } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { Dayjs } from 'dayjs';
 import { toast } from 'react-toastify';
-
 import WorkStationRoomsService from '../../services/WorkStationRoomsService';
 import {
   IWorkStationRoom,

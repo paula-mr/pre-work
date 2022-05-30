@@ -1,8 +1,11 @@
 import React, { createContext, useContext } from 'react';
 
-interface IUsuario {
-  nome: string;
+export interface IUsuario {
   email: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  isAuthenticated: boolean;
 }
 
 interface IPropsUsuarioContext {
@@ -12,9 +15,12 @@ interface IPropsUsuarioContext {
 
 export const DEFAULT_VALUE = {
   usuario: {
-    nome: 'Igor Dias',
     email: '',
-  },
+    firstName: '',
+    id: 0,
+    lastName: '',
+    isAuthenticated: false,
+  } as IUsuario,
   setUsuario: () => null,
 };
 
