@@ -30,10 +30,7 @@ class WorkStationRoomsService {
   }
 
   public async createStationBooking(stationBooking: ICreateStationBooking) {
-    const response = await WorkStationRepository.createStationBooking(
-      stationBooking,
-    );
-    return response;
+    await WorkStationRepository.createStationBooking(stationBooking);
   }
 }
 

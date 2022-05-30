@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { KeyboardDatePicker, TimePicker } from '@material-ui/pickers';
+import { KeyboardDatePicker } from '@material-ui/pickers';
 import {
   makeStyles,
   MenuItem,
@@ -11,12 +11,16 @@ import {
   Divider,
 } from '@material-ui/core';
 import dayjs from 'dayjs';
+import { toast } from 'react-toastify';
 
 import WorkStationsPanel from '../components/WorkStationsPanel/WorkStationsPanel';
 import { COLORS } from '../../../config/material.theme';
 import Botao from '../../../shared/components/Botao';
 import WorkStationService from '../services/WorkStationRoomsService';
-import { IWorkStationRoom } from '../../../repositorios/WorkStationRepository';
+import {
+  IWorkStationRoom,
+  IWorkStation,
+} from '../../../repositorios/WorkStationRepository';
 
 function WorkStationRooms() {
   const classes = useStyles();
@@ -26,6 +30,8 @@ function WorkStationRooms() {
     null,
   );
   const [selectedDate, setSelectedDate] = useState(dayjs());
+  const [selectedWorkStation, setSelectedWorkStation] =
+    useState<IWorkStation | null>(null);
 
   const handleRoomChange = (event: any) => {
     const roomID = event.target.value;
@@ -37,12 +43,29 @@ function WorkStationRooms() {
     setSelectedDate(date);
   };
 
+  const handleSelectedWorkStation = (workStation: IWorkStation | null) => {
+    setSelectedWorkStation(workStation);
+  };
+
   const handleCreateStationBooking = async () => {
-    WorkStationService.createStationBooking({
-      user_id: '123',
-      station_id: '456',
-      date: selectedDate.toDate(),
-    });
+    if (selectedWorkStation) {
+      WorkStationService.createStationBooking({
+        user_id: '2',
+        station_id: selectedWorkStation.id,
+        date: selectedDate.format('YYYY-MM-DD'),
+      });
+      getWorkStationRooms();
+    } else {
+      toast.error('Nenhum assento selecionado.', {
+        position: 'bottom-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const getWorkStationRooms = async () => {
@@ -79,7 +102,12 @@ function WorkStationRooms() {
           </FormControl>
         </Box>
         <Box className={classes.detailsBottom}>
-          <WorkStationsPanel room={selectedRoom} date={selectedDate} />
+          <WorkStationsPanel
+            room={selectedRoom}
+            date={selectedDate}
+            selectedWorkStation={selectedWorkStation}
+            handleSelectedWorkStation={handleSelectedWorkStation}
+          />
         </Box>
       </Box>
       <Box className={classes.form}>

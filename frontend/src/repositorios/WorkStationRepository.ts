@@ -26,7 +26,7 @@ export type IStationBooking = {
 export type ICreateStationBooking = {
   user_id: string;
   station_id: string;
-  date: Date;
+  date: string;
 };
 
 class WorkStationRepository {
@@ -46,14 +46,11 @@ class WorkStationRepository {
   }
 
   async createStationBooking(stationBooking: ICreateStationBooking) {
-    const response = await axios.post('/stationBookings', {
+    await axios.post('/stationBookings', {
       user_id: stationBooking.user_id,
       station_id: stationBooking.station_id,
       date: stationBooking.date,
     });
-
-    console.log(response.data);
-    return response.data;
   }
 }
 

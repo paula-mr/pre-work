@@ -17,20 +17,21 @@ import { COLORS } from '../../../../config/material.theme';
 type IWorkStationsPanel = {
   room: IWorkStationRoom | null;
   date: Dayjs;
+  selectedWorkStation: IWorkStation | null;
+  handleSelectedWorkStation: (workStation: IWorkStation | null) => void;
 };
 
 const WorkStationsPanel: FC<IWorkStationsPanel> = ({
   room,
   date,
+  selectedWorkStation,
+  handleSelectedWorkStation,
 }): JSX.Element => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [bookedStations, setBookedStations] = useState<IWorkStation[]>([]);
   const [numberOfColumns, setNumberOfColumns] = useState(20);
   const [numberOfRows, setNumberOfRows] = useState(10);
-  const [selectedWorkStationNumber, setSelectedWorkStationNumber] = useState<
-    number | null
-  >(null);
 
   async function retrieveData() {
     setLoading(true);
@@ -57,11 +58,20 @@ const WorkStationsPanel: FC<IWorkStationsPanel> = ({
       }
     }
 
-    const selectedStation =
-      workStationNumber !== selectedWorkStationNumber
-        ? workStationNumber
-        : null;
-    setSelectedWorkStationNumber(selectedStation);
+    const newSelectedStation = room?.stations.find(
+      station => station.name === String(workStationNumber),
+    );
+
+    if (newSelectedStation) {
+      if (
+        selectedWorkStation &&
+        selectedWorkStation.id === newSelectedStation.id
+      ) {
+        handleSelectedWorkStation(null);
+      } else {
+        handleSelectedWorkStation(newSelectedStation);
+      }
+    }
   }
 
   function defineMatrixElementColor(element: number) {
@@ -74,12 +84,12 @@ const WorkStationsPanel: FC<IWorkStationsPanel> = ({
         break;
       default:
         for (let i = 0; i < bookedStations.length; i++) {
-          const stationNumber = +bookedStations[i].name;
-          if (element === stationNumber) {
+          const stationName = bookedStations[i].name;
+          if (String(element) === stationName) {
             return COLORS.RED.DEFAULT;
           }
         }
-        if (element === selectedWorkStationNumber) {
+        if (String(element) === selectedWorkStation?.name) {
           return COLORS.BLUE.DEFAULT;
         }
         return COLORS.GREEN.DEFAULT;
@@ -87,7 +97,7 @@ const WorkStationsPanel: FC<IWorkStationsPanel> = ({
   }
 
   useEffect(() => {
-    setSelectedWorkStationNumber(null);
+    handleSelectedWorkStation(null);
     retrieveData();
   }, [room, date]);
 
@@ -130,10 +140,8 @@ const WorkStationsPanel: FC<IWorkStationsPanel> = ({
         )}
       </Box>
       <Box className={classes.containerRodape}>
-        {selectedWorkStationNumber !== null &&
-        selectedWorkStationNumber !== undefined &&
-        selectedWorkStationNumber !== 0
-          ? `Assento Selecionado: ${selectedWorkStationNumber}`
+        {selectedWorkStation
+          ? `Assento Selecionado: ${selectedWorkStation.name}`
           : 'Nenhum assento selecionado'}
       </Box>
     </>
