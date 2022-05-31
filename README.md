@@ -158,7 +158,7 @@ Cada uma delas é implementada por um repositório correspondente, responsável 
 
 Todas essas funcionalidades são definidas por injeção de dependências. Na definição de urls (em urls.py) injetamos a implementação dos repositories e services da seguinte maneira:
 
-``
+```
 user_repository = UserRepository()
 login_service = LoginService(repository=user_repository)
 user_service = UserService(repository=user_repository)
@@ -168,10 +168,10 @@ work_station_room_service = WorkStationRoomService(repository=work_station_room_
 
 station_booking_repository = StationBookingRepository()
 station_booking_service = StationBookingService(
-bookings_repository=station_booking_repository,
-rooms_repository=work_station_room_repository
+  bookings_repository=station_booking_repository,
+  rooms_repository=work_station_room_repository
 )
-``
+```
 
 Isso nos permite manter a barreira de anticorrupção intacta.
 
