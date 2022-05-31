@@ -5,7 +5,7 @@ from datetime import datetime
 
 from src.utils import EnhancedJSONEncoder
 
-from src.station_booking.domain.istation_booking import IStationBooking
+from src.station_booking.domain.istation_booking_service import IStationBookingService
 from src.station_booking.adapters.exceptions import NoStationBookingFoundException, NoStationFoundException, StationAlreadyBookedException
 from src.user.adapters.exceptions import NoUserFoundException
 
@@ -14,7 +14,7 @@ from src.user.adapters.exceptions import NoUserFoundException
 class StationBookingApi(View):
     station_booking_service = None
     
-    def __init__(self, station_booking_service: IStationBooking):
+    def __init__(self, station_booking_service: IStationBookingService):
         self.station_booking_service = station_booking_service
 
     def get(self, request):        

@@ -2,7 +2,7 @@ from uuid import UUID
 from typing import List
 from datetime import datetime
 
-from src.station_booking.domain.istation_booking import IStationBooking
+from src.station_booking.domain.istation_booking_service import IStationBookingService
 from src.station_booking.domain.istation_booking_repository import IStationBookingRepository
 from src.station_booking.domain.station_booking import StationBooking
 from src.work_station_room.domain.iwork_station_room_repository import IWorkStationRoomRepository
@@ -11,7 +11,7 @@ from src.station_booking.adapters.exceptions import StationAlreadyBookedExceptio
 
 ## Classe de domínio
 ## Implementa o serviço de StationBooking
-class StationBookingService(IStationBooking):
+class StationBookingService(IStationBookingService):
     def __init__(
         self, 
         bookings_repository: IStationBookingRepository, 
