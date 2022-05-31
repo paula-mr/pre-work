@@ -176,3 +176,28 @@ rooms_repository=work_station_room_repository
 Isso nos permite manter a barreira de anticorrupção intacta.
 
 ### Domain Driven Design
+
+Para o desenvolvimento da aplicação, buscamos aplicar o conceito de linguagem ubíqua, portanto utilizamos termos comuns no âmbito de coworkings, como 'work station', 'station room' e 'booking' para reservas.
+Isso possibilita uma comunicação natural com stakeholders e a manutenção da congruência do código.
+
+No nosso projeto, temos algumas entidades: a WorkStation, a WorkStationRoom e o User.
+
+Nós utilizamos também um objeto de valor muito importante: o datetime, da biblioteca datetime.
+Por lidarmos com agendamento de estações de trabalho, é essencial que tenhamos a informação de quando determinada estação está ocupada.
+
+Temos também um agregado, a classe StationBooking. Ela possui um usuário (uma entidade) a data de agendamento (um objeto de valor) e uma work station (também uma entidade), de forma a representar o agendamento de uma estação de trabalho em um determinado dia por um usuário.
+
+Ainda no domínio, implementamos os seguintes serviço:
+
+- UserService
+- LoginService
+- WorkStationRoomService
+- StationBookingService
+
+Esses serviços realizam operações importantes de domínio a partir de métodos e são stateless. Eles utilizam dos repositórios a seguir para persistir os resultados de suas operações:
+
+- UserRepository
+- WorkStationRoomRepository
+- StationBookingRepository
+
+Conforme explicado na seção de arquitetura hexagonal, os repositórios são adaptadores que abstraem o acesso ao banco de dados, e são usados para recuperar entidades e agregados.
