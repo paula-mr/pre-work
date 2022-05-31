@@ -26,6 +26,14 @@ function Login() {
     navigate('/cadastro');
   };
 
+  const handlePasswordEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      if (senha) {
+        handleLogin();
+      }
+    }
+  }
+
   async function handleLogin() {
     const dadosUsuario = await LoginService.fazerLogin(login, senha);
 
@@ -59,6 +67,7 @@ function Login() {
       <TextField
         aria-label="senha"
         onChange={e => setSenha(e.target.value)}
+        onKeyDown={handlePasswordEnter}
         color="primary"
         variant="outlined"
         label="Senha"
