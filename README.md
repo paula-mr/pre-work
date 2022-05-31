@@ -71,6 +71,7 @@ Assim, tarefas como gestão de usuários e gestão de estações de trabalho con
   - Tarefa 4: Criar tabela de estações de trabalho. (Victor)
   - Tarefa 5: Criar tabela de reservas de estações de trabalho. (Fernanda)
   - Tarefa 6: Criar endpoint para retornar a disponibilidade das estações de trabalho na sala e dia pesquisados. (Victor)
+
 - **Como** usuário do PreWork, **quero** reservar estações de trabalho **para** que eu possa trabalhar presencialmente em um local específico.
 
   - Tarefa 1: Implementar página de reserva de estações de trabalho. (Eduardo)
@@ -82,9 +83,9 @@ Backlog de tarefas disponível também no [Trello](https://trello.com/b/FBUHFzwk
 
 ### Gestão de usuários
 
-* **Como** usuário administrador, **quero** cadastrar um novo usuário.
-* **Como** usuário administrador, **quero** administrar os usuários com acesso ao escritório.
-* **Como** usuário administrador, **quero** deslogar do PreWork.
+- **Como** usuário administrador, **quero** cadastrar um novo usuário.
+- **Como** usuário administrador, **quero** administrar os usuários com acesso ao escritório.
+- **Como** usuário administrador, **quero** deslogar do PreWork.
 
 ### Reserva de salas
 
@@ -113,11 +114,65 @@ Backlog de tarefas disponível também no [Trello](https://trello.com/b/FBUHFzwk
 - **Como** usuário administrador, **quero** visualizar os detalhes de uma sala de reunião **para** verificar os dados cadastrados.
 - **Como** usuário administrador, **quero** visualizar todas as reservas de salas de reunião realizadas.
 
-
 ## Arquitetura do Backend
 
 ### Arquitetura Hexagonal
 
+O sistema está adotando a arquitetura hexagonal porque ela favorece a utilização de boas práticas de programação, em especial o baixo acoplamento e independência da tecnologia.
+Assim, mantivemos os detalhes tecnológicos, como o Django Rest Framework e o Django ORM completamente segregados do domínio na pasta "adapters", enquanto o domínio está definido na pasta "domain".
+Isso aumenta a testabilidade do nosso código e a sua coesão.
+
+Assim, nossa arquitetura foi implementada de acordo com os diagramas abaixo:
+
+![Arquitetura hexagonal no contexto de usuário](imgs/user.png "Arquitetura hexagonal no contexto de usuário")
+
+![Arquitetura hexagonal no contexto de sala de estações de trabalho](imgs/workstation-room.png "Arquitetura hexagonal no contexto de sala de estações de trabalho")
+
+![Arquitetura hexagonal no contexto de agendamento](imgs/station-booking.png "Arquitetura hexagonal no contexto de agendamento")
+
+Como é posssível observar nos diagramas, temos 4 adaptadores para interfaces web:
+
+- UserAPI
+- LoginAPI
+- WorkStationRoomAPI
+- StationBookingApi
+
+Eles servem para abstrair o framework web utilizado, de forma a permitir que o domínio se comunique independente de ser HTTP, mobile, do formato de entrada ser Json, XML, etc.
+
+Cada um desses adaptadores se comunica com uma porta de entrada, que definem interfaces para a comunicação com o domínio para que os adaptadores sigam, sendo elas respectivamente:
+
+- IUserService
+- ILoginService
+- IWorkStationRoomService
+- IStationBookingService
+
+Nos domínios, possuímos classes de serviço e entidades que serão explorados mais a fundo na seção seguinte.
+
+No domínio, temos também algumas portas de saída, que servem para abstrair a comunicação com o banco de dados. São elas:
+
+- IUserRepository
+- IWorkStationRoomRepository
+- IStationBookingRepository
+
+Cada uma delas é implementada por um repositório correspondente, responsável por realizar a comunicação com o banco de dados PostgreSQL a partir da utilização do DjangoORM e depois transformar o model do Django em uma entidade de domínio. Assim, nosso domínio não é poluído com o conceito de "model" do Django ou nenhum outro detalhe tecnológico.
+
+Todas essas funcionalidades são definidas por injeção de dependências. Na definição de urls (em urls.py) injetamos a implementação dos repositories e services da seguinte maneira:
+
+``
+user_repository = UserRepository()
+login_service = LoginService(repository=user_repository)
+user_service = UserService(repository=user_repository)
+
+work_station_room_repository = WorkStationRoomRepository()
+work_station_room_service = WorkStationRoomService(repository=work_station_room_repository)
+
+station_booking_repository = StationBookingRepository()
+station_booking_service = StationBookingService(
+bookings_repository=station_booking_repository,
+rooms_repository=work_station_room_repository
+)
+``
+
+Isso nos permite manter a barreira de anticorrupção intacta.
 
 ### Domain Driven Design
-
