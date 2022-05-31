@@ -157,7 +157,9 @@ const useStyles = makeStyles({
     gridTemplateAreas: `'details form'`,
     gridTemplateColumns: '70% 30%',
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: '5vh',
+    maxWidth: '1400px'
   },
   details: {
     gridArea: 'details',
