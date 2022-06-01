@@ -39,13 +39,12 @@ function Home() {
 }
 const useStyles = makeStyles({
   container: {
-    height: '30vh',
+    height: 'calc(100vh - 64px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
     gap: '60px',
-    marginTop: '20vh',
   },
   containerImage: {
     display: 'grid',
