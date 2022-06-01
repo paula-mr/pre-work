@@ -51,16 +51,22 @@ function WorkStationRooms() {
         station_id: selectedWorkStation.id,
         date: selectedDate.format('YYYY-MM-DD'),
       });
-      getWorkStationRooms();
-      toast.success(`Assento ${selectedWorkStation.name} agendado para o dia ${selectedDate.format('DD-MM-YYYY')}`, {
-        position: 'bottom-center',
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      const workStationRooms = await WorkStationService.getWorkStationRooms();
+      setRooms(workStationRooms);
+      toast.success(
+        `Assento ${
+          selectedWorkStation.name
+        } agendado para o dia ${selectedDate.format('DD-MM-YYYY')}`,
+        {
+          position: 'bottom-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        },
+      );
     } else {
       toast.error('Nenhum assento selecionado.', {
         position: 'bottom-center',
@@ -169,7 +175,7 @@ const useStyles = makeStyles({
     gridTemplateAreas: `'details form'`,
     gridTemplateColumns: '70% 30%',
     alignItems: 'center',
-    paddingTop: '64px'
+    paddingTop: '64px',
   },
 
   details: {
@@ -202,7 +208,7 @@ const useStyles = makeStyles({
       marginRight: '0',
     },
     '&:last-child': {
-      marginRight: '20px'
+      marginRight: '20px',
     },
   },
 
@@ -240,7 +246,7 @@ const useStyles = makeStyles({
     borderColor: COLORS.BLACK.ORIGINAL,
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   header: {
@@ -250,8 +256,8 @@ const useStyles = makeStyles({
     '& p': {
       margin: 'auto',
       width: 'fit-content',
-      padding: '40px 0'
-    }
+      padding: '40px 0',
+    },
   },
 
   datetime: {
@@ -264,7 +270,7 @@ const useStyles = makeStyles({
     width: '100%',
     justifyContent: 'space-evenly',
     padding: '30px',
-    marginTop: 'auto'
+    marginTop: 'auto',
   },
 
   botao: {
@@ -286,11 +292,11 @@ const useStyles = makeStyles({
       borderRadius: '10px',
       padding: '0 10px',
       '&::before': {
-        border: 'none !important'
+        border: 'none !important',
       },
       '&::after': {
         border: 'none !important',
-      }
+      },
     },
   },
 
@@ -298,7 +304,7 @@ const useStyles = makeStyles({
     background: COLORS.BLACK.DEFAULT,
     height: '2px',
     width: '100%',
-  }
+  },
 });
 
 export default WorkStationRooms;
