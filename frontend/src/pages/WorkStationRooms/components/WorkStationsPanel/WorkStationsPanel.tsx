@@ -155,6 +155,7 @@ const useStyles = makeStyles({
   },
   containerRodape: {
     paddingLeft: '5px',
+    marginLeft: '15px',
     height: '20%',
     width: '100%',
   },

@@ -35,7 +35,7 @@ function WorkStationRooms() {
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const [selectedWorkStation, setSelectedWorkStation] =
     useState<IWorkStation | null>(null);
-  const newBooking = false;
+
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
@@ -123,10 +123,11 @@ function WorkStationRooms() {
       <Box className={classes.form}>
         <Box className={classes.header}>
           <Typography>{selectedRoom}</Typography>
-          <Divider />
+          <Divider className={classes.muiDivider} />
         </Box>
         <Box className={classes.datetime}>
           <KeyboardDatePicker
+            className={classes.datetimeInternal}
             variant="inline"
             label="Data"
             value={selectedDate.toDate()}
@@ -161,15 +162,16 @@ function WorkStationRooms() {
 }
 const useStyles = makeStyles({
   container: {
-    height: '100vh',
+    height: 'calc(100vh - 64px)',
+    maxWidth: '1600px',
+    margin: 'auto',
     display: 'grid',
     gridTemplateAreas: `'details form'`,
     gridTemplateColumns: '70% 30%',
     alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: '5vh',
-    maxWidth: '1400px'
+    paddingTop: '64px'
   },
+
   details: {
     gridArea: 'details',
     height: '85vh',
@@ -177,11 +179,13 @@ const useStyles = makeStyles({
     gridTemplateAreas: `'detailsTop' 'detailsBottom'`,
     gridTemplateRows: '20% 80%',
   },
+
   detailsTop: {
     gridArea: 'detailsTop',
     margin: '20px',
     backgroundColor: COLORS.WHITE.DEFAULT,
-    borderRadius: '8px',
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     display: 'flex',
     placeContent: 'space-around',
     alignItems: 'center',
@@ -189,9 +193,19 @@ const useStyles = makeStyles({
     borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
   },
+
   formControl: {
-    width: '45vh',
+    width: '100%',
+    marginLeft: '20px',
+    marginRight: '20px',
+    '&:first-child': {
+      marginRight: '0',
+    },
+    '&:last-child': {
+      marginRight: '20px'
+    },
   },
+
   detailsBottom: {
     gridArea: 'detailsBottom',
     margin: '20px',
@@ -215,37 +229,42 @@ const useStyles = makeStyles({
   form: {
     gridArea: 'form',
     backgroundColor: COLORS.WHITE.DEFAULT,
-    borderRadius: '8px',
+    border: 'solid 1px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     height: '80vh',
     margin: '20px',
-    display: 'grid',
     gridTemplateAreas: `'header' 'datetime' 'actions'`,
     gridTemplateRows: '20% 65% 15%',
     borderWidth: '2px',
     borderStyle: 'solid',
     borderColor: COLORS.BLACK.ORIGINAL,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
-  header: {
-    display: 'grid',
-    gridArea: 'header',
-    justifyContent: 'center',
-    padding: '5vh 2vh',
 
+  header: {
+    width: '100%',
+    paddingLeft: '30px',
+    paddingRight: '30px',
+    '& p': {
+      margin: 'auto',
+      width: 'fit-content',
+      padding: '40px 0'
+    }
   },
 
   datetime: {
-    display: 'grid',
-    gridArea: 'datetime',
-    justifyContent: 'center',
-
+    width: '100%',
+    padding: '50px 30px',
   },
 
   actions: {
-    gridArea: 'actions',
     display: 'flex',
+    width: '100%',
     justifyContent: 'space-evenly',
-    padding: '1vh',
-
+    padding: '30px',
+    marginTop: 'auto'
   },
 
   botao: {
@@ -258,6 +277,28 @@ const useStyles = makeStyles({
       backgroundColor: COLORS.BLUE.HOVER,
     },
   },
+
+  datetimeInternal: {
+    paddingBottom: '20px',
+    '&> div': {
+      marginTop: '24px',
+      border: 'solid 1px black',
+      borderRadius: '10px',
+      padding: '0 10px',
+      '&::before': {
+        border: 'none !important'
+      },
+      '&::after': {
+        border: 'none !important',
+      }
+    },
+  },
+
+  muiDivider: {
+    background: COLORS.BLACK.DEFAULT,
+    height: '2px',
+    width: '100%',
+  }
 });
 
 export default WorkStationRooms;

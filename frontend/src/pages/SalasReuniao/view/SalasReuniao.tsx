@@ -259,12 +259,13 @@ const useStyles = makeStyles({
     }
   },
   datetime: {
+    width: '100%',
     padding: '50px 30px',
   },
   actions: {
     display: 'flex',
     width: '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     padding: '30px',
     marginTop: 'auto'
   },
