@@ -35,7 +35,7 @@ function WorkStationRooms() {
   const [selectedDate, setSelectedDate] = useState(dayjs());
   const [selectedWorkStation, setSelectedWorkStation] =
     useState<IWorkStation | null>(null);
-
+  const newBooking = false;
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
@@ -52,6 +52,15 @@ function WorkStationRooms() {
         date: selectedDate.format('YYYY-MM-DD'),
       });
       getWorkStationRooms();
+      toast.success(`Assento ${selectedWorkStation.name} agendado para o dia ${selectedDate.format('DD-MM-YYYY')}`, {
+        position: 'bottom-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       toast.error('Nenhum assento selecionado.', {
         position: 'bottom-center',
