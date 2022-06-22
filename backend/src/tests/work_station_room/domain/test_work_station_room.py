@@ -25,3 +25,13 @@ class TestWorkStationRoom(TestCase):
         actual = work_station_room.get_room_bookings(all_bookings=[booking])
 
         self.assertEqual(expected, actual)
+
+    def test_WHEN_there_is_a_booking_THEN_return_booking(self):
+        station = WorkStation(id='id', name='1')
+        work_station_room = WorkStationRoom(id='id', name='room', stations=[station], matrix=[['1']])
+        booking = StationBooking(person=User(id=1, first_name="name", last_name="last", email="email"), station=station, date=datetime.now())
+        expected = [booking]
+
+        actual = work_station_room.get_room_bookings(all_bookings=[booking])
+
+        self.assertEqual(expected, actual)

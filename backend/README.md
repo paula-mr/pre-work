@@ -33,3 +33,10 @@ A primeira vez que o projeto é executado, é necessário criar um usuário de a
 `` python manage.py createsuperuser ``
 
 Depois, basta acessar `http://localhost:8000/admin/` para ter acesso às funções de admin.
+
+## Testes
+
+Para rodar os testes, basta executar:
+
+`` python manage.py test ``
+
