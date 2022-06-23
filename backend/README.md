@@ -40,3 +40,6 @@ Para rodar os testes, basta executar:
 
 `` python manage.py test ``
 
+Ou simplesmente:
+
+`` pytest ``
