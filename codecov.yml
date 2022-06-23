@@ -1,0 +1,9 @@
+ignore:
+  - "backend/manage.py"
+  - "backend/src/settings.py"
+  - "backend/test_settings.py"
+  - "backend/tests"
+  - "backend/src/asgi.py"
+  - "backend/src/wsgi.py"
+  - "backend/src/urls.py"
+  - "backend/src/**/migrations"
