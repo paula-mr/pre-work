@@ -1,6 +1,7 @@
 ignore:
   - "manage.py"
-  - "**/*settings.py"
+  - "src/settings.py"
+  - "test_settings.py"
   - "tests"
   - "src/asgi.py"
   - "src/wsgi.py"

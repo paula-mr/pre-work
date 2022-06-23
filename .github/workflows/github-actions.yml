@@ -26,7 +26,7 @@ jobs:
           pytest
 
   build-and-test-coverage-linux:
-    name: Build and Test
+    name: Build, Test and Coverage on Linux
     runs-on: ubuntu-latest
 
     steps:
@@ -44,5 +44,5 @@ jobs:
       - name: Test
         run: |
           cd backend
-          pytest --cov=./ --cov-report=xml
+          pytest --cov=src tests/ --cov-report=xml
           codecov
