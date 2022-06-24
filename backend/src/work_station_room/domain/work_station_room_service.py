@@ -11,5 +11,4 @@ class WorkStationRoomService(IWorkStationRoomService):
         self.repository = repository
 
     def listWorkStationRooms(self, room_id: str) -> List[WorkStationRoom]:
-        work_station_rooms = self.repository.listWorkStationRooms(room_id=room_id)
-        return work_station_rooms
+        return self.repository.listWorkStationRooms(room_id=room_id)
