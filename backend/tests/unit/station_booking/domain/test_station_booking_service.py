@@ -37,4 +37,13 @@ class TestStationBookingService(TestCase):
         actual = self.service.listStationBookings(room_id=None, date=datetime.now())
 
         self.assertEqual(expected, actual)
+        
+    def test_WHEN_there_are_ids_and_no_rooms_THEN_return_list_empty(self):
+        expected = []
+        self.mock_repository_bookings.listStationBookings.return_value = []
+        self.mock_repository_rooms.listWorkStationRooms.return_value = []
+
+        actual = self.service.listStationBookings(room_id='id1', date=datetime.now())
+
+        self.assertEqual(expected, actual)
 
