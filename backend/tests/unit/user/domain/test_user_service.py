@@ -24,10 +24,10 @@ class TestUserService(TestCase):
                 last_name='teste'
             )
 
-        actual = self.service.create(User(
-                email='teste', 
+        actual = self.service.create(
+                email='teste',
+                password='secret',
                 first_name='teste', 
-                last_name='teste'
-            ), 'secret')
+                last_name='teste')
 
         self.assertEqual(expected, actual)
