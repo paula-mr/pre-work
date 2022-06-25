@@ -32,7 +32,7 @@ class TestStationBookingService(TestCase):
                 first_name='teste', 
                 last_name='teste'), stations=[WorkStation(id='id2', name='1')], date=datetime.now())
         ]
-        self.mock_repository_bookings.listStationBookings.return_value = [expected]
+        self.mock_repository_bookings.listStationBookings.return_value = expected
 
         actual = self.service.listStationBookings(room_id=None, date=datetime.now())
 
