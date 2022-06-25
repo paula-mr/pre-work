@@ -19,7 +19,7 @@ class WorkStationRoomRepository(IWorkStationRoomRepository):
         else:
             work_station_rooms_model =  WorkStationRoomModel.objects.filter().all()
 
-        if work_station_rooms_model is None:
+        if not work_station_rooms_model:
             raise NoWorkStationRoomsFoundException
 
         work_station_rooms = []
