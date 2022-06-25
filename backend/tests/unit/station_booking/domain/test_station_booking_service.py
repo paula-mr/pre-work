@@ -21,16 +21,17 @@ class TestStationBookingService(TestCase):
     def test_WHEN_there_are_no_ids_THEN_return_all_bookings(self):
         expected = [
             StationBooking(person=User(
-                id=1,
-                email='teste', 
+                email='teste',
                 first_name='teste', 
-                last_name='teste'
+                last_name='teste',
+                id=1
             ), station=WorkStation(id='id1', name='1'), date=datetime.now()),
             StationBooking(person=User(
-                id=2,
-                email='teste', 
+                email='teste',
                 first_name='teste', 
-                last_name='teste'), station=WorkStation(id='id2', name='1'), date=datetime.now())
+                last_name='teste',
+                id=2
+                ), station=WorkStation(id='id2', name='1'), date=datetime.now())
         ]
         self.mock_repository_bookings.listStationBookings.return_value = expected
 
