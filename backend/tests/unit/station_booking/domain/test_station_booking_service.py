@@ -25,12 +25,12 @@ class TestStationBookingService(TestCase):
                 email='teste', 
                 first_name='teste', 
                 last_name='teste'
-            ), station=[WorkStation(id='id1', name='1')], date=datetime.now()),
+            ), station=WorkStation(id='id1', name='1'), date=datetime.now()),
             StationBooking(person=User(
                 id=2,
                 email='teste', 
                 first_name='teste', 
-                last_name='teste'), station=[WorkStation(id='id2', name='1')], date=datetime.now())
+                last_name='teste'), station=WorkStation(id='id2', name='1'), date=datetime.now())
         ]
         self.mock_repository_bookings.listStationBookings.return_value = expected
 
