@@ -9,7 +9,7 @@ from src.station_booking.domain.istation_booking_repository import IStationBooki
 from src.station_booking.domain.station_booking import StationBooking
 from src.user.domain.user import User
 from src.work_station.domain.work_station import WorkStation
-from src.station_booking.adapters.exceptions import NoStationBookingFoundException
+from src.station_booking.adapters.exceptions import NoStationBookingFoundException, NoStationFoundException
 from src.user.adapters.exceptions import NoUserFoundException
 
 ## Implementa adaptador de acesso à tabela de station 
