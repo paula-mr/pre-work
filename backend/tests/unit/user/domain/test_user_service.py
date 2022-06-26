@@ -10,7 +10,7 @@ class TestUserService(TestCase):
         self.repository_mock = Mock()
         self.service = UserService(repository=self.repository_mock)
 
-    def test_WHEN_there_are_create_user_THEN_return_user(self):
+    def test_WHEN_successfully_create_user_THEN_return_user(self):
         expected = User(
                 id=1,
                 email='teste', 
