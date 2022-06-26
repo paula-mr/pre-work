@@ -26,7 +26,7 @@ class StationBookingRepository(IStationBookingRepository):
         else:
             station_bookings_model =  StationBookingModel.objects.filter().all()
             
-        if station_bookings_model is None:
+        if not station_bookings_model:
             raise NoStationBookingFoundException
 
         station_bookings = []
