@@ -3,7 +3,7 @@
 describe('Book Workstation', () => {
 
     before(() => {
-      cy.login('test@test.com', '12345678')
+      cy.loginSession('test@test.com', '12345678')
     })
     beforeEach(() => {
       cy.visit('http://localhost:3000/home')

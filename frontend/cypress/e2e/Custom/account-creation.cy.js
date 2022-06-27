@@ -42,9 +42,6 @@ describe('Create Account', () => {
 
       // Login works for the new account
       cy.login(`test@test.com+${currentTimeInMilliseconds}`, '12345678')
-      
-      cy.wait(2000)
-      cy.url().should('eq', 'http://localhost:3000/home')
     })
   
   })
