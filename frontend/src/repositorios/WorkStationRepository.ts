@@ -36,13 +36,17 @@ class WorkStationRepository {
   }
 
   async listStationBookings(roomID?: string, date?: string) {
-    const response = await axios.get<IStationBooking[]>('/stationBookings', {
-      params: {
-        room_id: roomID,
-        date,
-      },
-    });
+    try {
+      const response = await axios.get<IStationBooking[]>('/stationBookings', {
+        params: {
+          room_id: roomID,
+          date,
+        },
+      });
     return response.data;
+    } catch (error) {
+      return [];
+    }
   }
 
   async createStationBooking(stationBooking: ICreateStationBooking) {
