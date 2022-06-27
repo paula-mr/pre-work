@@ -41,8 +41,7 @@ describe('Create Account', () => {
       cy.get('.Toastify').should('contain.text', 'Cadastro efetuado')
 
       // Login works for the new account
-      cy.get('input[name="Email"]').should('be.visible').type(`test@test.com+${currentTimeInMilliseconds}`)
-      cy.get('input[type=password]').should('be.visible').type('12345678')
+      cy.login(`test@test.com+${currentTimeInMilliseconds}`, '12345678')
       
       cy.wait(2000)
       cy.url().should('eq', 'http://localhost:3000/home')
